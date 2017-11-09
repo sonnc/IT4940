@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 27, 2017 9:43:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.DeTai" table="DeTai" catalog="Project3" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="maCongTy" type="int">
+            <column name="MaCongTy" />
+        </property>
+        <property name="tenDeTai" type="string">
+            <column name="TenDeTai" length="1000" />
+        </property>
+        <property name="noiDung" type="string">
+            <column name="NoiDung" length="65535" />
+        </property>
+        <property name="yeuCau" type="string">
+            <column name="YeuCau" length="65535" />
+        </property>
+        <property name="nguoiDang" type="string">
+            <column name="NguoiDang" />
+        </property>
+        <property name="trangThai" type="java.lang.Boolean">
+            <column name="TrangThai" />
+        </property>
+        <property name="soLuong" type="int">
+            <column name="SoLuong" />
+        </property>
+        <property name="gvhd" type="int">
+            <column name="GVHD" />
+        </property>
+    </class>
+</hibernate-mapping>

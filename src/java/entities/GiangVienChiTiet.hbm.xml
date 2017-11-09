@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 27, 2017 9:43:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.GiangVienChiTiet" table="GiangVienChiTiet" catalog="Project3" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="cacMonGiangDay" type="string">
+            <column name="CacMonGiangDay" length="45" />
+        </property>
+        <property name="huongNghienCuu" type="string">
+            <column name="HuongNghienCuu" length="45" />
+        </property>
+        <property name="cacCongTrinhNghienCuu" type="string">
+            <column name="CacCongTrinhNghienCuu" length="45" />
+        </property>
+        <property name="sachXuatBan" type="string">
+            <column name="SachXuatBan" length="45" />
+        </property>
+        <property name="khac" type="string">
+            <column name="Khac" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,88 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <action name="login" class="actions.LoginActions" method="Login">
+            <result name="success" type="redirect">home.jsp</result>
+            <result name="input">login.jsp</result>
+            <result name="updateInfoSinhVien" type="redirect">/sinhvien/capnhatthongtin.jsp</result>
+        </action>
+        <action name="createAccount" class="actions.LoginActions" method="CreateAccount">
+            <result name="success" type="redirect">/congty/capnhatthongtin.jsp</result>
+            <result name="input">/login.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="sinhvienLogout" class="actions.SinhvienAction" method="LogOut">
+            <result name="success" type="redirect">login.jsp</result>
+        </action>
+        <action name="updateTaiKhoan" class="actions.SinhvienAction" method="SaveInfoSinhVien">
+            <result name="success" type="redirect">home.jsp</result>
+            <result name="input">/sinhvien/capnhatthongtin.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="actionHome" class="actions.OtherAction" method="GetAllHome">
+            <result name="success">home.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getDiemThiSinhVien" class="actions.SinhvienAction" method="GetDiemThi">
+            <result name="success">/sinhvien/diemthi.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getAllCongTy" class="actions.SinhvienAction" method="GetAllCongTy">
+            <result name="success">/sinhvien/danhsachcongty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="chiTietCongTy" class="actions.SinhvienAction" method="GetChiTietCongTy">
+            <result name="success" >/sinhvien/chitietcongty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getAllDeTai" class="actions.SinhvienAction" method="GetAllDeTai">
+            <result name="success" >/sinhvien/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="chiTietDeTai" class="actions.SinhvienAction" method="GetChiTietDeTai">
+            <result name="success" >/sinhvien/chitietdetai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="dangKyDeTai" class="actions.SinhvienAction" method="DangKyDeTai">
+            <result name="success" >/sinhvien/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getSoLuongDeTaiDK" class="actions.SinhvienAction" method="DangKyDeTai">
+            <result name="success" >/sinhvien/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getSinhVienFile" class="actions.SinhvienAction" method="GetFileSinhVien">
+            <result name="success" >/sinhvien/filesinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="uploadFile" class="actions.SinhvienAction" method="UploadFileSinhVien">
+            <result name="success" >/sinhvien/filesinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="capNhatThongTinDDCT" class="actions.DdctAction" method="CapNhatDDCT">
+            <result name="success" >/home.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="DDCTLogOut" class="actions.DdctAction" method="LogOut">
+            <result name="success" type="redirect">login.jsp</result>
+        </action>
+        
+        
+        <action name="CongTyGetCongTy" class="actions.DdctAction" method="GetChiTietCongTy">
+            <result name="success" >/congty/congty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="CongTyGetNhanVien" class="actions.DdctAction" method="GetAllNhanVien">
+            <result name="success" >/congty/nhanvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="addNhanVien" class="actions.DdctAction" method="AddNhanVien">
+            <result name="success" >/congty/nhanvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+    </package>
+</struts>

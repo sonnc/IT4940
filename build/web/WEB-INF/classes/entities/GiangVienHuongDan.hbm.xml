@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 27, 2017 9:43:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.GiangVienHuongDan" table="GiangVienHuongDan" catalog="Project3" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="msct" type="int">
+            <column name="Msct"/>
+        </property>
+        <property name="hoTen" type="string">
+            <column name="HoTen" length="45" />
+        </property>
+        <property name="chucVu" type="string">
+            <column name="ChucVu" length="45" />
+        </property>
+        <property name="dienThoai" type="string">
+            <column name="DienThoai" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="45" />
+        </property>
+        <property name="avatar" type="string">
+            <column name="Avatar" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+De tranh su xung dot he thong, chet CSDL. Hay config theo huong dan sau:
+1. Khoi tao Session
+2. Khoi tao Transaction
+3. Mo Session
+4. Mo Transaction
+5. Su dung Try cach	
+
+vi du
+
+ public SinhvienController() {
+	// khong dung ham getCurrentSession()
+        session = HibernateUtil.getSessionFactory().openSession();
+    }
+
+    // Phần lấy thông tin sinh viên
+    public List<SinhVien> GetInfoSinhVien(int mssv) {
+        List<SinhVien> lstSinhVien = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVien where Mssv =:mssv");
+            q.setParameter("mssv", mssv);
+            lstSinhVien = q.list();
+            transaction.commit(); // dong transaction
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();// quay lai neu transaction con mo
+            }
+            e.printStackTrace();
+        }
+        return lstSinhVien;
+    }
