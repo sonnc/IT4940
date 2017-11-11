@@ -40,7 +40,7 @@
         <%
         } else if (session.getAttribute("role").equals("3")) {
         %>
-        <%@include file="/congty/ctheader.jsp" %>
+        <%@include file="./congty/ctheader.jsp" %>
         <%
         } else if (session.getAttribute("role").equals("4")) {
         %>

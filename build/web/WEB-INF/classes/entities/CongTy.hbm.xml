@@ -24,10 +24,10 @@
             <column name="Website" length="500" />
         </property>
         <property name="linhVucHoatDong" type="string">
-            <column name="LinhVucHoatDong" length="1000" />
+            <column name="LinhVucHoatDong" length="10000" />
         </property>
         <property name="moTa" type="string">
-            <column name="MoTa" length="5000" />
+            <column name="MoTa" length="10000" />
         </property>
         <property name="avatar" type="string">
             <column name="Avatar" length="500" />

@@ -5,10 +5,16 @@
  */
 package controllers;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 /**
  *
  * @author sonnguyen
  */
 public class GvttController {
+    Session session;
+    Transaction transaction;
+    
     
 }

@@ -42,7 +42,7 @@
                                             <s:iterator value="lstCTDT">
                                                 <div class="col-md-4">
                                                     <div class="post-thumb">
-                                                        <a href="chiTietCongTy?maCongTy=<s:property value="msct"/>"><img style="height: 100%; width: 100%" src="asset/images/blog/7.jpg" class="img-responsive" alt=""></a>
+                                                        <a href="chiTietCongTy?maCongTy=<s:property value="msct"/>"><img style="height: 100%; width: 100%" src="<s:property value="avatar"/>" class="img-responsive" alt=""></a>
                                                         <div class="btn">
                                                             <a href="dangKyDeTai?maDeTai=<s:property value="id"/>" class="btn btn-common uppercase">ĐĂNG KÝ</a>
                                                         </div>

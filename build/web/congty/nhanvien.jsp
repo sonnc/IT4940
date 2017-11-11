@@ -92,7 +92,8 @@
                                                 <div class="wow scaleIn animated" data-wow-duration="500ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 500ms; animation-delay: 300ms; animation-name: scaleIn;">
                                                     <a href="chitietnhanvien?id=<s:property value="id"/>"><img style="margin-bottom: 0px; height: 165px; width: 165px" src="<s:property value="avatar"/>" alt=""></a>
                                                 </div>
-                                                    <a href="chitietnhanvien?id=<s:property value="id"/>"><h4 style="margin-bottom: 0px;"><s:property value="hoTen"/></h4></a>
+                                                    <a><h4 style="margin-bottom: 0px;"><s:property value="hoTen"/></h4></a>
+<!--                                                    <a href="chitietnhanvien?id=<s:property value="id"/>"><h4 style="margin-bottom: 0px;"><s:property value="hoTen"/></h4></a>-->
                                                 <p><s:property value="chucVu"/></p>
                                                 <p><s:property value="dienThoai"/></p>
                                                 <p><s:property value="email"/></p>

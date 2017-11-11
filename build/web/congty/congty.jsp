@@ -114,7 +114,7 @@
                                                             <s:iterator value="lstGiangVienHuongDan">
                                                                 <div class="media">
                                                                     <div class="pull-left">
-                                                                        <a href="chitietGVHD?id=<s:property value="id"/>"><img src="asset/images/bk2017.jpg" style="height: 70px; width: 70px" alt=""></a>
+                                                                        <a href="chitietGVHD?id=<s:property value="id"/>"><img src="<s:property value="avatar"/>" style="height: 70px; width: 70px" alt=""></a>
                                                                     </div>
                                                                     <div class="media-body">
                                                                         <p style="margin: 0px; font-size: 14px">Họ tên: <a href="chitietGVHD?id=<s:property value="id"/>"><s:property value="hoTen"/></a></p>

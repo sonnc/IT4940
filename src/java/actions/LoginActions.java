@@ -10,7 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import controllers.LoginController;
 import controllers.*;
 import entities.Login;
-import entities.SinhVien;
+import entities.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,11 +33,31 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
     private SinhvienController sinhvienController;
     private LogController logController;
     private DdctController daiDienCongTyController;
+    private GiangVien giangVienThucTapController;
+    private GiangVienHuongDan giangVienHuongDanController;
 
     // tạo các list lưu thông tin
     private List<SinhVien> lstSinhVien = new ArrayList<>();
     private List<DaiDienCongTy> lstDaiDienCongTy = new ArrayList<>();
     private List<Login> lstLogin = new ArrayList<>();
+    private List<GiangVien> lstGiangVienThucTap  = new ArrayList<>();
+    private List<GiangVienHuongDan> lstGiangVienHuongDan = new ArrayList<>();
+
+    public List<GiangVien> getLstGiangVienThucTap() {
+        return lstGiangVienThucTap;
+    }
+
+    public void setLstGiangVienThucTap(List<GiangVien> lstGiangVienThucTap) {
+        this.lstGiangVienThucTap = lstGiangVienThucTap;
+    }
+
+    public List<GiangVienHuongDan> getLstGiangVienHuongDan() {
+        return lstGiangVienHuongDan;
+    }
+
+    public void setLstGiangVienHuongDan(List<GiangVienHuongDan> lstGiangVienHuongDan) {
+        this.lstGiangVienHuongDan = lstGiangVienHuongDan;
+    }
 
     public List<Login> getLstLogin() {
         return lstLogin;
@@ -121,6 +141,7 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
                 }
             } else if (lstLogin.get(0).getRule() == 1) {
                 session.put("role", "1");
+                lstGiangVienThucTap = 
             } else if (lstLogin.get(0).getRule() == 2) {
                 session.put("role", "2");
             } else if (lstLogin.get(0).getRule() == 3) {

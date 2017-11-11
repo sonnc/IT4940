@@ -17,6 +17,11 @@ import entities.DaiDienCongTy;
 import entities.DeTai;
 import entities.GiangVienHuongDan;
 import entities.Login;
+import entities.SinhVien;
+import entities.SinhVienKnvaLt;
+import entities.SinhVienMucTieu;
+import entities.SinhVienThucTap;
+import entitiesmapping.SinhVienvaThucTap;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +43,56 @@ public class DdctAction extends ActionSupport implements SessionAware, ServletRe
     private String myFileFileName;
     private String myFileLOGOFileName;
     private String path;
+    private DeTai deTai;
     private GiangVienHuongDan nhanVien;
     private List<DaiDienCongTy> lstDaiDienCongTy = new ArrayList<>();
     private List<DeTai> lstDeTai = new ArrayList<>();
     private List<CongTy> lstCongTy = new ArrayList<>();
     private List<GiangVienHuongDan> lstGiangVienHuongDan = new ArrayList<>();
+    private List<SinhVienvaThucTap> lstSinhVienvaThucTap = new ArrayList<>();
+    private List<SinhVien> lstSinhVien = new ArrayList<>();
+    private List<SinhVienKnvaLt> lstKNLT = new ArrayList<>();
+    private List<SinhVienMucTieu> lstMucTieu = new ArrayList<>();
+
+    public List<SinhVien> getLstSinhVien() {
+        return lstSinhVien;
+    }
+
+    public void setLstSinhVien(List<SinhVien> lstSinhVien) {
+        this.lstSinhVien = lstSinhVien;
+    }
+
+    public List<SinhVienKnvaLt> getLstKNLT() {
+        return lstKNLT;
+    }
+
+    public void setLstKNLT(List<SinhVienKnvaLt> lstKNLT) {
+        this.lstKNLT = lstKNLT;
+    }
+
+    public List<SinhVienMucTieu> getLstMucTieu() {
+        return lstMucTieu;
+    }
+
+    public void setLstMucTieu(List<SinhVienMucTieu> lstMucTieu) {
+        this.lstMucTieu = lstMucTieu;
+    }
+
+    public List<SinhVienvaThucTap> getLstSinhVienvaThucTap() {
+        return lstSinhVienvaThucTap;
+    }
+
+    public void setLstSinhVienvaThucTap(List<SinhVienvaThucTap> lstSinhVienvaThucTap) {
+        this.lstSinhVienvaThucTap = lstSinhVienvaThucTap;
+    }
+
+    public DeTai getDeTai() {
+        return deTai;
+    }
+
+    public void setDeTai(DeTai deTai) {
+        this.deTai = deTai;
+    }
 
     public GiangVienHuongDan getNhanVien() {
         return nhanVien;
@@ -175,10 +225,10 @@ public class DdctAction extends ActionSupport implements SessionAware, ServletRe
             if (daiDienCongTyController.CapNhatCongTy(congTy)) {
                 lstCongTy = daiDienCongTyController.GetMSCT(congTy.getEmail());
                 daiDien.setAvatar(avatar);
-                daiDien.setEmail((String) session.get("emailCT"));
+                daiDien.setEmail((String) session.get("email"));
                 daiDien.setMaCongTy(lstCongTy.get(0).getMsct());
                 if (daiDienCongTyController.CapNhatDDCT(daiDien)) {
-                    lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("emailCT"));
+                    lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
                     session.put("role", "3");
                     session.put("lstDaiDienCongTy", lstDaiDienCongTy);
                     return SUCCESS;
@@ -187,10 +237,10 @@ public class DdctAction extends ActionSupport implements SessionAware, ServletRe
         } else if (lstCongTy.size() == 1) {
             lstCongTy = daiDienCongTyController.GetMSCT(congTy.getEmail());
             daiDien.setAvatar(avatar);
-            daiDien.setEmail((String) session.get("emailCT"));
+            daiDien.setEmail((String) session.get("email"));
             daiDien.setMaCongTy(lstCongTy.get(0).getMsct());
             if (daiDienCongTyController.CapNhatDDCT(daiDien)) {
-                lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("emailCT"));
+                lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
                 session.put("lstDaiDienCongTy", lstDaiDienCongTy);
                 return SUCCESS;
             }
@@ -241,6 +291,81 @@ public class DdctAction extends ActionSupport implements SessionAware, ServletRe
             }
         }
         return ERROR;
+    }
+
+    public String GetAllDeTai() {
+        lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
+        int ms = lstDaiDienCongTy.get(0).getMaCongTy();
+        lstDeTai = daiDienCongTyController.GelAllDeTai(ms);
+        lstGiangVienHuongDan = daiDienCongTyController.GetAllGVHDofACongTy(ms);
+        session.put("soLuongGVHD", lstGiangVienHuongDan.size());
+        session.put("GetAllDeTai", "GetAllDeTai");
+        return SUCCESS;
+    }
+
+    public String AddDeTai() {
+        lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
+        int ms = lstDaiDienCongTy.get(0).getMaCongTy();
+        int x = Integer.parseInt(request.getParameter("giangVienHD"));
+        deTai.setGvhd(x);
+        deTai.setNguoiDang((String) session.get("email"));
+        deTai.setTrangThai(false);
+        deTai.setMaCongTy(ms);
+        if (daiDienCongTyController.SaveDeTai(deTai)) {
+            GetAllDeTai();
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
+
+    }
+
+    public String DeleteDeTai() {
+        lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
+        int ms = lstDaiDienCongTy.get(0).getMaCongTy();
+        int x = Integer.parseInt(request.getParameter("maDeTai"));
+        if (daiDienCongTyController.DeleteDetai(x, ms)) {
+            session.put("success", "yes");
+
+        } else {
+            session.put("error", "no");
+        }
+        return SUCCESS;
+    }
+
+    public String GetAllSinhVienThucTap() {
+        lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
+        int ms = lstDaiDienCongTy.get(0).getMaCongTy();
+        SinhVienvaThucTap sinhVienvaThucTap = new SinhVienvaThucTap();
+        List<SinhVien> lstSinhVien = new ArrayList<>();
+        List<SinhVienThucTap> lstSinhVienThucTap = new ArrayList<>();
+        lstSinhVien = daiDienCongTyController.GetAllSinhVien();
+        lstSinhVienThucTap = daiDienCongTyController.GetAllSinhVienThucTapByID(ms);
+        for (int i = 0; i < lstSinhVienThucTap.size(); i++) {
+            for (int j = 0; j < lstSinhVien.size(); j++) {
+                if (lstSinhVienThucTap.get(i).getMssv() == lstSinhVien.get(j).getMssv()) {
+                    sinhVienvaThucTap.setMssv(lstSinhVien.get(j).getMssv());
+                    sinhVienvaThucTap.setDiaChi(lstSinhVien.get(j).getDiaChi());
+                    sinhVienvaThucTap.setDienThoai(lstSinhVien.get(j).getDienThoai());
+                    sinhVienvaThucTap.setEmail(lstSinhVien.get(j).getEmail());
+                    sinhVienvaThucTap.setHoTen(lstSinhVien.get(j).getHoTen());
+                    sinhVienvaThucTap.setThoiGianBatDau(lstSinhVienThucTap.get(i).getThoiGianBatDau());
+                    sinhVienvaThucTap.setThoiGianKetThuc(lstSinhVienThucTap.get(i).getThoiGianKetThuc());
+                    lstSinhVienvaThucTap.add(sinhVienvaThucTap);
+                    break;
+                }
+            }
+        }
+        session.put("GetSinhVienThucTap", "GetSinhVienThucTap");
+        return SUCCESS;
+    }
+
+    public String GetCVSinhVien() {
+        int x = Integer.parseInt(request.getParameter("mssv"));
+        lstSinhVien = daiDienCongTyController.GetInfoSinhVien(x);
+        lstKNLT = daiDienCongTyController.GetKNLTSinhVien(x);
+        lstMucTieu = daiDienCongTyController.GetMucTieuSV(x);
+        return SUCCESS;
     }
 
     public String LogOut() {

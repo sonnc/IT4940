@@ -171,6 +171,7 @@ public class DdctController {
         }
         return true;
     }
+
     public boolean SaveNhanVien(GiangVienHuongDan gvhd) {
         try {
             transaction = session.beginTransaction();
@@ -186,4 +187,160 @@ public class DdctController {
         return true;
     }
 
+    public List GelAllDeTai(int msct) {
+        List<DeTai> lsDeTai = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM DeTai WHERE MaCongTy =:msct");
+            q.setParameter("msct", msct);
+            lsDeTai = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return lsDeTai;
+    }
+
+    public boolean SaveDeTai(DeTai deTai) {
+        try {
+            transaction = session.beginTransaction();
+            session.save(deTai);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean DeleteDetai(int id, int msct) {
+        List<SinhVienThucTap> list = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaCongTy =:msct");
+            q.setParameter("msct", msct);
+            list = q.list();
+            if (list.size() >= 1) {
+                return false;
+            }
+            DeTai deTai = (DeTai) session.get(DeTai.class, id);
+            session.delete(deTai);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    // kiểm tra xem đề tài đã có sinh viên nào đăng ký chưa
+//    public boolean CheckDeTaiSV(int msct) {
+//        List<SinhVienThucTap> list = new ArrayList<>();
+//        try {
+//            transaction = session.beginTransaction();
+//            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaCongTy =:msct");
+//            q.setParameter("msct", msct);
+//            list = q.list();
+//            transaction.commit();
+//        } catch (Exception e) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//            return false;
+//        }
+//        return true;
+//    }
+    public List GetAllSinhVienThucTapByID(int msct) {
+        List<SinhVienThucTap> list = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaCongTy =:msct and TrangThai = true");
+            q.setParameter("msct", msct);
+            list = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List GetAllSinhVien() {
+        List<SinhVien> list = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVien");
+            list = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<SinhVien> GetInfoSinhVien(int mssv) {
+        List<SinhVien> lstSinhVien = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVien where Mssv =:mssv");
+            q.setParameter("mssv", mssv);
+            lstSinhVien = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return lstSinhVien;
+    }
+
+    public List GetKNLTSinhVien(int mssv) {
+        List<SinhVienKnvaLt> lstSinhVien = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienKnvaLt where Mssv =:mssv");
+            q.setParameter("mssv", mssv);
+            lstSinhVien = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return lstSinhVien;
+    }
+
+    public List<SinhVienMucTieu> GetMucTieuSV(int mssv) {
+        List<SinhVienMucTieu> lstSinhVien = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienMucTieu where Mssv =:mssv");
+            q.setParameter("mssv", mssv);
+            lstSinhVien = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return lstSinhVien;
+    }
 }

@@ -84,5 +84,29 @@
             <result name="success" >/congty/nhanvien.jsp</result>
             <result name="error">404.html</result>
         </action>
+        <action name="CongTyGetAllDeTai" class="actions.DdctAction" method="GetAllDeTai">
+            <result name="success" >/congty/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="addDeTai" class="actions.DdctAction" method="AddDeTai">
+            <result name="success" >/congty/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaDeTai" class="actions.DdctAction" method="DeleteDeTai">
+            <result name="success" >/congty/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GetSinhVienThucTap" class="actions.DdctAction" method="GetAllSinhVienThucTap">
+            <result name="success" >/congty/danhsachsinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+         <action name="chiTietDeTaiCT" class="actions.SinhvienAction" method="GetChiTietDeTai">
+            <result name="success" >/congty/chitietdetai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+         <action name="chiTietSinhVien" class="actions.DdctAction" method="GetCVSinhVien">
+            <result name="success" >/congty/CVSinhVien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
     </package>
 </struts>
