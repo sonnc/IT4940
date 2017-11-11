@@ -13,10 +13,10 @@
     <%    if (session.getAttribute("DeTai") == null) {
     %>
     <s:action name="getAllDeTai" executeResult="true"/>
-    <%        
+    <%
         }
     %>
-    <%    
+    <%
         if (session.getAttribute("DeTai") != null) {
             session.removeAttribute("DeTai");
     %>
@@ -39,17 +39,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-sm-7">
-                        <%                        
+                        <%
                             if (session.getAttribute("SoDeTaiDK").equals("no")) {
                         %>
                         <h3 style="color: red; margin: 0px 0px 30px 0px; text-align: center"><strong>Hiện tại bạn chưa đăng ký đề tài nào </strong>!</h3>
-                        <%    
+                        <%
+                            session.removeAttribute("SoDeTaiDK");
                         } else if (session.getAttribute("QuaSoLuongDKDT") != null) {
                         %>
                         <h3 style="color: red; margin: 0px 0px 30px 0px; text-align: center">
                             <strong>Bạn đã đăng ký  <strong style="color: blue; "> 3 </strong>
                             </strong> đề tài! Bạn không thể đăng ký thêm đề tài. <a href="getSoLuongDeTaiDK">Xem danh sách</a></h3>
-                            <%        
+                            <%
+                                session.removeAttribute("QuaSoLuongDKDT");
                             } else if (session.getAttribute("TrungDeTai") != null) {
                             %>
                         <h3 style="color: red; margin: 0px 0px 30px 0px; text-align: center">
@@ -57,6 +59,15 @@
                             <strong>Bạn đã đăng ký  <strong style="color: blue"><%= session.getAttribute("SoDeTaiDK")%> </strong>>
                             </strong> đề tài! <a href="getSoLuongDeTaiDK">Xem danh sách</a></h3>
                             <%
+                                session.removeAttribute("TrungDeTai");
+                            } else if (session.getAttribute("DeTaiSUCCESS") != null) {
+                            %>
+                        <h3 style="color: red; margin: 0px 0px 30px 0px; text-align: center">
+                            <p style="color: blue"><strong>BẠN ĐÃ ĐĂNG KÝ THÀNH CÔNG 1 ĐỀ TÀI THỰC TẬP. BẠN KHÔNG THỂ ĐĂNG KÝ THÊM ĐỀ TÀI</strong></p>
+                            <strong>Bạn đã đăng ký  <strong style="color: blue"><%= session.getAttribute("SoDeTaiDK")%> </strong>>
+                            </strong> đề tài! <a href="getSoLuongDeTaiDK">Xem danh sách</a></h3>
+                            <%
+                                session.removeAttribute("DeTaiSUCCESS");
                             } else {
                             %>
                         <h3 style="color: red; margin: 0px 0px 30px 0px; text-align: center">
@@ -79,7 +90,7 @@
                                 max-height: 35px;
                             }
                         </style>
-                      
+
                         <s:iterator value="lstCTDT">
                             <div class="row" style="margin-bottom: 25px">
                                 <div class="col-md-2">

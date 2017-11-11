@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/web/congty/detai.jsp</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/src/java/controllers/SinhvienController.java</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/src/java/actions/DdctAction.java</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/src/java/struts.xml</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/src/java/actions/SinhvienAction.java</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/src/java/controllers/DdctController.java</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/src/java/actions/OtherAction.java</file>
+            <file>file:/home/sonnguyen/NetBeansProjects/IT4940/web/sinhvien/detai.jsp</file>
         </group>
     </open-files>
 </project-private>

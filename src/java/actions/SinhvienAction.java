@@ -388,22 +388,32 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
         lstCongTy = sinhvienController.GetAllCongTy();
         for (int i = 0; i < lstCongTy.size(); i++) {
             for (int j = 0; j < lstDeTai.size(); j++) {
-                CongTyDeTai congTyDeTai = new CongTyDeTai();
-                congTyDeTai.setTenCongTy(lstCongTy.get(i).getTenCongTy());
-                congTyDeTai.setAvatar(lstCongTy.get(i).getAvatar());
-                congTyDeTai.setMsct(lstCongTy.get(i).getMsct());
-                congTyDeTai.setId(lstDeTai.get(j).getId()); // mã đề tài
-                congTyDeTai.setTenDeTai(lstDeTai.get(j).getTenDeTai());
-                congTyDeTai.setNoiDung(lstDeTai.get(j).getNoiDung());
-                congTyDeTai.setYeuCau(lstDeTai.get(j).getYeuCau());
-                congTyDeTai.setSoLuong(lstDeTai.get(j).getSoLuong());
-                lstCTDT.add(congTyDeTai);
+                if (lstCongTy.get(i).getMsct() == lstDeTai.get(j).getMaCongTy()) {
+                    CongTyDeTai congTyDeTai = new CongTyDeTai();
+                    congTyDeTai.setTenCongTy(lstCongTy.get(i).getTenCongTy());
+                    congTyDeTai.setAvatar(lstCongTy.get(i).getAvatar());
+                    congTyDeTai.setMsct(lstCongTy.get(i).getMsct());
+                    congTyDeTai.setId(lstDeTai.get(j).getId()); // mã đề tài
+                    congTyDeTai.setTenDeTai(lstDeTai.get(j).getTenDeTai());
+                    congTyDeTai.setNoiDung(lstDeTai.get(j).getNoiDung());
+                    congTyDeTai.setYeuCau(lstDeTai.get(j).getYeuCau());
+                    congTyDeTai.setSoLuong(lstDeTai.get(j).getSoLuong());
+                    lstCTDT.add(congTyDeTai);
+                }
+
             }
         }
         lstSinhVienTT = sinhvienController.GetThucTapSinhVien((int) session.get("mssv"));
         if (lstSinhVienTT.size() == 0) {
             session.put("SoDeTaiDK", "no");
         } else {
+            for (int i = 0; i < lstSinhVienTT.size(); i++) {
+                if (lstSinhVienTT.get(i).getTrangThai() == true) {
+                    session.put("DeTaiSUCCESS", "DeTaiSUCCESS");
+                    break;
+                }
+
+            }
             session.put("SoDeTaiDK", lstSinhVienTT.size());
         }
         session.put("DeTai", "DeTai");
@@ -524,7 +534,11 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
             }
 
         }
-        phanTram = 100 * (phanTram / count);
+        if (count == 0) {
+            phanTram = 0;
+        } else {
+            phanTram = 100 * (phanTram / count);
+        }
 
         lstSinhVienThucTap = sinhvienController.GetThucTapSinhVien((int) session.get("mssv"));
         if (lstSinhVienThucTap.size() < 3) {
@@ -558,22 +572,37 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
                     session.put("DeTai", "DeTai");
                     return SUCCESS;
                 } else {
-                    int maGVDH = sinhvienController.GetMaGVHDfromDeTai(mdt);
-                    SinhVienThucTap sinhVienThucTap = new SinhVienThucTap();
-                    sinhVienThucTap.setMssv((int) session.get("mssv"));
-                    sinhVienThucTap.setMaDeTai(mdt);
-                    sinhVienThucTap.setNguoiHuongDan(maGVDH);
-                    if (phanTram >= 80) {
-                        sinhVienThucTap.setTrangThai(true);
-                    } else {
-                        sinhVienThucTap.setTrangThai(false);
+                    boolean checkDTSV = false;
+                    for (int i = 0; i < lstSinhVienThucTap.size(); i++) {
+                        if (lstSinhVienThucTap.get(i).getTrangThai() == true) {
+                            checkDTSV = true;
+                            break;
+                        }
                     }
-                    sinhVienThucTap.setSoKhop(phanTram);
-                    if (sinhvienController.SaveThucTapSinhVien(sinhVienThucTap)) {
+                    if (checkDTSV) {
                         GetAllDeTai();
+                        session.put("DeTaiSUCCESS", "DeTaiSUCCESS");
                         session.put("DeTai", "DeTai");
                         return SUCCESS;
+                    } else {
+                        int maGVDH = sinhvienController.GetMaGVHDfromDeTai(mdt);
+                        SinhVienThucTap sinhVienThucTap = new SinhVienThucTap();
+                        sinhVienThucTap.setMssv((int) session.get("mssv"));
+                        sinhVienThucTap.setMaDeTai(mdt);
+                        sinhVienThucTap.setNguoiHuongDan(maGVDH);
+                        if (phanTram >= 80) {
+                            sinhVienThucTap.setTrangThai(true);
+                        } else {
+                            sinhVienThucTap.setTrangThai(false);
+                        }
+                        sinhVienThucTap.setSoKhop(phanTram);
+                        if (sinhvienController.SaveThucTapSinhVien(sinhVienThucTap)) {
+                            GetAllDeTai();
+                            session.put("DeTai", "DeTai");
+                            return SUCCESS;
+                        }
                     }
+
                 }
             }
         } else {

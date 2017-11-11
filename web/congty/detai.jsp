@@ -146,7 +146,7 @@
                                                     </div>
                                                     <div class="col-lg-3">
                                                         <div class="form-group">
-                                                            <input id="soluong" name="soLuong" class="form-control"  placeholder="Số lượng" required="required"/>
+                                                            <input id="soluong" name="deTai.soLuong" class="form-control"  placeholder="Số lượng" required="required"/>
                                                             <span id="soluong_error"></span>
                                                         </div>
                                                     </div>

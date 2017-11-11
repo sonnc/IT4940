@@ -86,7 +86,7 @@ public class SinhVienThucTap  implements java.io.Serializable {
         this.maDeTai = maDeTai;
     }
 
-    public boolean isTrangThai() {
+    public boolean getTrangThai() {
         return trangThai;
     }
 

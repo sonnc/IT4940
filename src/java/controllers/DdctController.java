@@ -219,12 +219,12 @@ public class DdctController {
         return true;
     }
 
-    public boolean DeleteDetai(int id, int msct) {
+    public boolean DeleteDetai(int id) {
         List<SinhVienThucTap> list = new ArrayList<>();
         try {
             transaction = session.beginTransaction();
-            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaCongTy =:msct");
-            q.setParameter("msct", msct);
+            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaDeTai =:id");
+            q.setParameter("id", id);
             list = q.list();
             if (list.size() >= 1) {
                 return false;

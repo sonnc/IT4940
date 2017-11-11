@@ -324,7 +324,7 @@ public class DdctAction extends ActionSupport implements SessionAware, ServletRe
         lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy((String) session.get("email"));
         int ms = lstDaiDienCongTy.get(0).getMaCongTy();
         int x = Integer.parseInt(request.getParameter("maDeTai"));
-        if (daiDienCongTyController.DeleteDetai(x, ms)) {
+        if (daiDienCongTyController.DeleteDetai(x)) {
             session.put("success", "yes");
 
         } else {
