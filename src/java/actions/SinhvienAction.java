@@ -12,6 +12,8 @@ import entitiesmapping.*;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -407,14 +409,21 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
         if (lstSinhVienTT.size() == 0) {
             session.put("SoDeTaiDK", "no");
         } else {
+            int a = 0;
             for (int i = 0; i < lstSinhVienTT.size(); i++) {
-                if (lstSinhVienTT.get(i).getTrangThai() == true) {
+                if (lstSinhVienTT.get(i).getTrangThai() == 1) {
                     session.put("DeTaiSUCCESS", "DeTaiSUCCESS");
                     break;
                 }
 
             }
-            session.put("SoDeTaiDK", lstSinhVienTT.size());
+            for (int i = 0; i < lstSinhVienTT.size(); i++) {
+                if (lstSinhVienTT.get(i).getHoatDong() == true) {
+                    a++;
+                }
+            }
+
+            session.put("SoDeTaiDK", a);
         }
         session.put("DeTai", "DeTai");
         return SUCCESS;
@@ -524,36 +533,60 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
             }
         }
 
+        double tySoSoKhop = 0;
         for (int i = 0; i < arrSoKhopDT.size(); i++) {
             for (int j = 0; j < arrSoKhopSV.size(); j++) {
                 if (arrSoKhopDT.get(i).getLaptrinh().equalsIgnoreCase(arrSoKhopSV.get(j).getLaptrinh())) {
-                    count++;
-                    phanTram = phanTram + arrSoKhopSV.get(j).getDanhGia() / arrSoKhopDT.get(i).getDanhGia();
+                    tySoSoKhop = tySoSoKhop + arrSoKhopSV.get(j).getDanhGia() / arrSoKhopDT.get(i).getDanhGia();
                 }
 
             }
-
         }
-        if (count == 0) {
+        if (arrSoKhopDT.size() == 0) {
             phanTram = 0;
         } else {
-            phanTram = 100 * (phanTram / count);
+            phanTram = 100 * (tySoSoKhop / arrSoKhopDT.size());
         }
-
         lstSinhVienThucTap = sinhvienController.GetThucTapSinhVien((int) session.get("mssv"));
-        if (lstSinhVienThucTap.size() < 3) {
+        int dem = 0;
+        for (int i = 0; i < lstSinhVienThucTap.size(); i++) {
+            if (lstSinhVienThucTap.get(i).getHoatDong() == true) {
+                dem++;
+            }
+        }
+        if (dem < 3) {
             if (lstSinhVienThucTap.size() == 0) {
                 int maGVDH = sinhvienController.GetMaGVHDfromDeTai(mdt);
                 SinhVienThucTap sinhVienThucTap = new SinhVienThucTap();
                 sinhVienThucTap.setMssv((int) session.get("mssv"));
                 sinhVienThucTap.setMaDeTai(mdt);
                 sinhVienThucTap.setNguoiHuongDan(maGVDH);
-                if (phanTram >= 80) {
-                    sinhVienThucTap.setTrangThai(true);
+                sinhVienThucTap.setMaCongTy(lstDeTai.get(0).getMaCongTy());
+                if (phanTram >= 85) {
+                    sinhVienThucTap.setTrangThai(1);
+                    sinhVienThucTap.setSoLanThucTap(true);
+                } else if (phanTram <= 45) {
+                    sinhVienThucTap.setTrangThai(2);
+                    sinhVienThucTap.setSoLanThucTap(false);
                 } else {
-                    sinhVienThucTap.setTrangThai(false);
+                    sinhVienThucTap.setTrangThai(0);
+                    sinhVienThucTap.setSoLanThucTap(false);
                 }
                 sinhVienThucTap.setSoKhop(phanTram);
+                sinhVienThucTap.setHoatDong(true);
+                // thời gian bắt đầu 
+                java.util.Date utilDate = new java.util.Date();
+                java.sql.Date sqlDate1 = new java.sql.Date(utilDate.getTime());
+
+                sinhVienThucTap.setThoiGianBatDau(sqlDate1);
+
+                Calendar now = Calendar.getInstance();
+                now.add(Calendar.DATE, 90);
+                Date date = now.getTime();
+                java.sql.Date sqlDate2 = new java.sql.Date(date.getTime());
+
+                sinhVienThucTap.setThoiGianKetThuc(sqlDate2);
+
                 if (sinhvienController.SaveThucTapSinhVien(sinhVienThucTap)) {
                     GetAllDeTai();
                     session.put("DeTai", "DeTai");
@@ -562,7 +595,7 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
             } else {
                 boolean check = false;
                 for (int i = 0; i < lstSinhVienThucTap.size(); i++) {
-                    if (lstSinhVienThucTap.get(i).getMaDeTai() == mdt) {
+                    if (lstSinhVienThucTap.get(i).getMaDeTai() == mdt && lstSinhVienThucTap.get(i).getHoatDong() == true) {
                         check = true;
                     }
                 }
@@ -574,7 +607,7 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
                 } else {
                     boolean checkDTSV = false;
                     for (int i = 0; i < lstSinhVienThucTap.size(); i++) {
-                        if (lstSinhVienThucTap.get(i).getTrangThai() == true) {
+                        if (lstSinhVienThucTap.get(i).getTrangThai() == 1) {
                             checkDTSV = true;
                             break;
                         }
@@ -590,12 +623,32 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
                         sinhVienThucTap.setMssv((int) session.get("mssv"));
                         sinhVienThucTap.setMaDeTai(mdt);
                         sinhVienThucTap.setNguoiHuongDan(maGVDH);
+                        sinhVienThucTap.setMaCongTy(lstDeTai.get(0).getMaCongTy());
                         if (phanTram >= 80) {
-                            sinhVienThucTap.setTrangThai(true);
+                            sinhVienThucTap.setTrangThai(1);
+                            sinhVienThucTap.setSoLanThucTap(true);
+                        } else if (phanTram <= 45) {
+                            sinhVienThucTap.setTrangThai(2);
+                            sinhVienThucTap.setSoLanThucTap(false);
                         } else {
-                            sinhVienThucTap.setTrangThai(false);
+                            sinhVienThucTap.setTrangThai(0);
+                            sinhVienThucTap.setSoLanThucTap(false);
                         }
                         sinhVienThucTap.setSoKhop(phanTram);
+                        sinhVienThucTap.setHoatDong(true);
+
+                        // thời gian bắt đầu 
+                        java.util.Date utilDate = new java.util.Date();
+                        java.sql.Date sqlDate1 = new java.sql.Date(utilDate.getTime());
+
+                        sinhVienThucTap.setThoiGianBatDau(sqlDate1);
+
+                        Calendar now = Calendar.getInstance();
+                        now.add(Calendar.DATE, 90);
+                        Date date = now.getTime();
+                        java.sql.Date sqlDate2 = new java.sql.Date(date.getTime());
+
+                        sinhVienThucTap.setThoiGianKetThuc(sqlDate2);
                         if (sinhvienController.SaveThucTapSinhVien(sinhVienThucTap)) {
                             GetAllDeTai();
                             session.put("DeTai", "DeTai");

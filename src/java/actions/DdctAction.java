@@ -309,7 +309,7 @@ public class DdctAction extends ActionSupport implements SessionAware, ServletRe
         int x = Integer.parseInt(request.getParameter("giangVienHD"));
         deTai.setGvhd(x);
         deTai.setNguoiDang((String) session.get("email"));
-        deTai.setTrangThai(false);
+        deTai.setTrangThai(0);
         deTai.setMaCongTy(ms);
         if (daiDienCongTyController.SaveDeTai(deTai)) {
             GetAllDeTai();

@@ -1,6 +1,9 @@
 package entities;
 // Generated Oct 27, 2017 9:43:57 PM by Hibernate Tools 4.3.1
 
+import java.util.Date;
+
+
 
 
 /**
@@ -11,7 +14,7 @@ public class ThongBao  implements java.io.Serializable {
 
      private int id;
      private String tieuDe;
-     private String thoiGian;
+     private Date thoiGian;
      private String noiDung;
      private String nguoiDang;
 
@@ -22,7 +25,7 @@ public class ThongBao  implements java.io.Serializable {
     public ThongBao(int id) {
         this.id = id;
     }
-    public ThongBao(int id, String tieuDe, String thoiGian, String noiDung, String nguoiDang) {
+    public ThongBao(int id, String tieuDe, Date thoiGian, String noiDung, String nguoiDang) {
        this.id = id;
        this.tieuDe = tieuDe;
        this.thoiGian = thoiGian;
@@ -44,11 +47,11 @@ public class ThongBao  implements java.io.Serializable {
     public void setTieuDe(String tieuDe) {
         this.tieuDe = tieuDe;
     }
-    public String getThoiGian() {
+    public Date getThoiGian() {
         return this.thoiGian;
     }
     
-    public void setThoiGian(String thoiGian) {
+    public void setThoiGian(Date thoiGian) {
         this.thoiGian = thoiGian;
     }
     public String getNoiDung() {

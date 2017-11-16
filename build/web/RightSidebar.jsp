@@ -13,31 +13,27 @@
             <h3>Công ty</h3>
             <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2">
                 <s:iterator value="%{#session.lstCongTy}">
-                  <div class="media">
-                    <div class="pull-left">
-                        <a href="#" style="height: 20px; width: 20px"><img src="asset/images/aboutus/1.jpg" alt=""></a>
-                    </div>
-                    <div class="media-body">
-                        <h4><a href="#"><s:property value="tenCongTy"/></a></h4>
-                        <p><s:property value="email"/></p>
-                    </div>
-                </div>  
+                    <div class="media">
+                        <div class="pull-left">
+                            <a href="chiTietCongTyGV?maCongTy=<s:property value="msct"/>" style="height: 20px; width: 20px"><img style="width:70px; height:70px;" src="<s:property value="avatar"/>" alt=""></a>
+                        </div>
+                        <div class="media-body">
+                            <h4><a href="chiTietCongTyGV?maCongTy=<s:property value="msct"/>"><s:property value="tenCongTy"/></a></h4>
+                            <p><s:property value="email"/></p>
+                        </div>
+                    </div>  
                 </s:iterator>
-                
-                
+
+
             </marquee>
         </div>
         <div class="sidebar-item categories">
             <h3>Tài liệu</h3>
-            <ul class="nav navbar-stacked" style="height: 250px; overflow:auto">
-                <li class="active"><a href="#">Đăng ký thực tập<span class="pull-right">(1)</span></a></li>
-                <li ><a href="#">CV<span class="pull-right">(8)</span></a></li>
-                <li><a href="#">Báo cáo mẫu<span class="pull-right">(4)</span></a></li>
-                <li><a href="#">Đánh giá<span class="pull-right">(9)</span></a></li>
-                <li><a href="#">Chức năng<span class="pull-right">(3)</span></a></li>
-                <li><a href="#">Mô tả công ty<span class="pull-right">(4)</span></a></li>
-                <li><a href="#">File Sinh viên<span class="pull-right">(2)</span></a></li>
-            </ul>
+            <s:iterator value="%{#session.lstFile}">
+                <ul class="nav navbar-stacked" style="height: 150px; overflow:auto">
+                    <li ><a href="<s:property value="link"/>"><s:property value="tenFile"/><span class="pull-right"><s:property value="ngayThang"/></span></a></li>
+                </ul>
+            </s:iterator>
         </div>
         <div class="sidebar-item tag-cloud">
             <h3>Tag Cloud</h3>
@@ -51,14 +47,14 @@
             </ul>
         </div>
         <div class="sidebar-item popular">
-            <h3>Latest Photos</h3>
+            <h3>Trường đối tác</h3>
             <ul class="gallery">
-                <li><a href="#"><img src="asset/images/portfolio/popular1.jpg" alt=""></a></li>
-                <li><a href="#"><img src="asset/images/portfolio/popular2.jpg" alt=""></a></li>
-                <li><a href="#"><img src="asset/images/portfolio/popular3.jpg" alt=""></a></li>
-                <li><a href="#"><img src="asset/images/portfolio/popular4.jpg" alt=""></a></li>
-                <li><a href="#"><img src="asset/images/portfolio/popular5.jpg" alt=""></a></li>
-                <li><a href="#"><img src="asset/images/portfolio/popular1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="asset/images/universite/hust.png" alt=""></a></li>
+                <li><a href="#"><img src="asset/images/universite/inpg.png" alt=""></a></li>
+                <li><a href="#"><img src="asset/images/universite/ltu.png" alt=""></a></li>
+                <li><a href="#"><img src="asset/images/universite/nut.png" alt=""></a></li>
+                <li><a href="#"><img src="asset/images/universite/troy.png" alt=""></a></li>
+                <li><a href="#"><img src="asset/images/universite/upmf.png" alt=""></a></li>
             </ul>
         </div>
     </div>

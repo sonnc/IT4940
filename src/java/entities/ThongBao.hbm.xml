@@ -11,11 +11,11 @@
         <property name="tieuDe" type="string">
             <column name="TieuDe" length="45" />
         </property>
-        <property name="thoiGian" type="string">
-            <column name="ThoiGian" length="45" />
+        <property name="thoiGian" type="date">
+            <column name="ThoiGian"  />
         </property>
         <property name="noiDung" type="string">
-            <column name="NoiDung" length="45" />
+            <column name="NoiDung" />
         </property>
         <property name="nguoiDang" type="string">
             <column name="NguoiDang" length="45" />

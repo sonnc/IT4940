@@ -33,14 +33,14 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
     private SinhvienController sinhvienController;
     private LogController logController;
     private DdctController daiDienCongTyController;
-    private GiangVien giangVienThucTapController;
-    private GiangVienHuongDan giangVienHuongDanController;
+    private GvttController giangVienThucTapController;
+    private GvhdController giangVienHuongDanController;
 
     // tạo các list lưu thông tin
     private List<SinhVien> lstSinhVien = new ArrayList<>();
     private List<DaiDienCongTy> lstDaiDienCongTy = new ArrayList<>();
     private List<Login> lstLogin = new ArrayList<>();
-    private List<GiangVien> lstGiangVienThucTap  = new ArrayList<>();
+    private List<GiangVien> lstGiangVienThucTap = new ArrayList<>();
     private List<GiangVienHuongDan> lstGiangVienHuongDan = new ArrayList<>();
 
     public List<GiangVien> getLstGiangVienThucTap() {
@@ -97,6 +97,8 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
         sinhvienController = new SinhvienController();
         logController = new LogController();
         daiDienCongTyController = new DdctController();
+        giangVienHuongDanController = new GvhdController();
+        giangVienThucTapController = new GvttController();
 
     }
 
@@ -141,12 +143,22 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
                 }
             } else if (lstLogin.get(0).getRule() == 1) {
                 session.put("role", "1");
-                lstGiangVienThucTap = 
+                lstGiangVienThucTap = giangVienThucTapController.GetInfoGiangVien(email);
+                if (lstGiangVienThucTap.size() == 1) {
+                    session.put("lstGiangVienThucTap", lstGiangVienThucTap);
+                    return SUCCESS;
+                } else {
+                    return "updateGiangVienThucTap";
+                }
             } else if (lstLogin.get(0).getRule() == 2) {
+                lstGiangVienHuongDan = giangVienHuongDanController.GetInfo(email);
+                session.put("lstGiangVienHuongDan", lstGiangVienHuongDan);
                 session.put("role", "2");
+                session.put("msgvhd", lstGiangVienHuongDan.get(0).getId());
+                return SUCCESS;
             } else if (lstLogin.get(0).getRule() == 3) {
                 lstDaiDienCongTy = daiDienCongTyController.GetDaiDienCongTy(request.getParameter("email"));
-                 session.put("lstDaiDienCongTy", lstDaiDienCongTy);
+                session.put("lstDaiDienCongTy", lstDaiDienCongTy);
                 session.put("role", "3");
             } else if (lstLogin.get(0).getRule() == 4) {
                 session.put("role", "4");

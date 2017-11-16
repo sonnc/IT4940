@@ -40,33 +40,37 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Project3</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.pool_size">10000</property>
-        <property name="hibernate.connection.CharSet">utf8</property>
-        <property name="hibernate.connection.characterEncoding">utf8</property>
-        <property name="hibernate.connection.useUnicode">true</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.connection.password">1234</property>
-        <mapping resource="entities/GiangVienHuongDan.hbm.xml"/>
-        <mapping resource="entities/Logs.hbm.xml"/>
-        <mapping resource="entities/ThongBao.hbm.xml"/>
-        <mapping resource="entities/TinNhanEmail.hbm.xml"/>
-        <mapping resource="entities/SinhVienKnvaLt.hbm.xml"/>
-        <mapping resource="entities/GiangVienChiTiet.hbm.xml"/>
-        <mapping resource="entities/Login.hbm.xml"/>
-        <mapping resource="entities/SinhVienFile.hbm.xml"/>
-        <mapping resource="entities/SinhVienThucTap.hbm.xml"/>
-        <mapping resource="entities/SinhVienDiem.hbm.xml"/>
-        <mapping resource="entities/DeTai.hbm.xml"/>
-        <mapping resource="entities/SinhVienMucTieu.hbm.xml"/>
-        <mapping resource="entities/DaiDienCongTy.hbm.xml"/>
-        <mapping resource="entities/CongTy.hbm.xml"/>
-        <mapping resource="entities/GiangVien.hbm.xml"/>
-        <mapping resource="entities/SinhVien.hbm.xml"/>
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://node15837-intership.kilatiron.com/Project3</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">ty1neUhmb7</property>
+<!--    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/Project3</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">1234</property>-->
+    <property name="hibernate.connection.pool_size">10000</property>
+    <property name="hibernate.connection.CharSet">utf8</property>
+    <property name="hibernate.connection.characterEncoding">utf8</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="entities/GiangVienHuongDan.hbm.xml"/>
+    <mapping resource="entities/Logs.hbm.xml"/>
+    <mapping resource="entities/ThongBao.hbm.xml"/>
+    <mapping resource="entities/TinNhanEmail.hbm.xml"/>
+    <mapping resource="entities/SinhVienKnvaLt.hbm.xml"/>
+    <mapping resource="entities/GiangVienChiTiet.hbm.xml"/>
+    <mapping resource="entities/Login.hbm.xml"/>
+    <mapping resource="entities/SinhVienFile.hbm.xml"/>
+    <mapping resource="entities/SinhVienThucTap.hbm.xml"/>
+    <mapping resource="entities/SinhVienDiem.hbm.xml"/>
+    <mapping resource="entities/DeTai.hbm.xml"/>
+    <mapping resource="entities/SinhVienMucTieu.hbm.xml"/>
+    <mapping resource="entities/DaiDienCongTy.hbm.xml"/>
+    <mapping resource="entities/CongTy.hbm.xml"/>
+    <mapping resource="entities/GiangVien.hbm.xml"/>
+    <mapping resource="entities/SinhVien.hbm.xml"/>
+    <mapping resource="entities/HeSoDiem.hbm.xml"/>
+  </session-factory>
 </hibernate-configuration>

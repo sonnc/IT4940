@@ -264,7 +264,7 @@ public class DdctController {
         List<SinhVienThucTap> list = new ArrayList<>();
         try {
             transaction = session.beginTransaction();
-            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaCongTy =:msct and TrangThai = true");
+            Query q = session.createQuery("FROM SinhVienThucTap WHERE MaCongTy =:msct and TrangThai = 1");
             q.setParameter("msct", msct);
             list = q.list();
             transaction.commit();

@@ -11,11 +11,11 @@
         <property name="mssv" type="int">
             <column name="Mssv" length="45" />
         </property>
-        <property name="thoiGianBatDau" type="string">
-            <column name="ThoiGianBatDau" length="45" />
+        <property name="thoiGianBatDau" type="date">
+            <column name="ThoiGianBatDau"  />
         </property>
-        <property name="thoiGianKetThuc" type="string">
-            <column name="ThoiGianKetThuc" length="45" />
+        <property name="thoiGianKetThuc" type="date">
+            <column name="ThoiGianKetThuc" />
         </property>
         <property name="maCongTy" type="int">
             <column name="MaCongTy" length="45" />
@@ -26,11 +26,17 @@
         <property name="maDeTai" type="int">
             <column name="MaDeTai" length="45" />
         </property>
-        <property name="trangThai" type="java.lang.Boolean">
+        <property name="trangThai" type="int">
             <column name="TrangThai" />
         </property>
         <property name="soKhop" type="double">
             <column name="SoKhop" />
+        </property>
+        <property name="soLanThucTap" type="java.lang.Boolean">
+            <column name="SoLanThucTap" />
+        </property>
+        <property name="hoatDong" type="java.lang.Boolean">
+            <column name="HoatDong" />
         </property>
     </class>
 </hibernate-mapping>

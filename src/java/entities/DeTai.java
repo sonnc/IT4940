@@ -15,14 +15,14 @@ public class DeTai  implements java.io.Serializable {
      private String noiDung;
      private String yeuCau;
      private String nguoiDang;
-     private Boolean trangThai;
+     private int trangThai;
      private int soLuong;
      private int gvhd;
 
     public DeTai() {
     }
 
-    public DeTai(int maCongTy, String tenDeTai, String noiDung, String yeuCau, String nguoiDang, Boolean trangThai) {
+    public DeTai(int maCongTy, String tenDeTai, String noiDung, String yeuCau, String nguoiDang, int trangThai) {
        this.maCongTy = maCongTy;
        this.tenDeTai = tenDeTai;
        this.noiDung = noiDung;
@@ -73,11 +73,11 @@ public class DeTai  implements java.io.Serializable {
     public void setNguoiDang(String nguoiDang) {
         this.nguoiDang = nguoiDang;
     }
-    public Boolean getTrangThai() {
+    public int getTrangThai() {
         return this.trangThai;
     }
     
-    public void setTrangThai(Boolean trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
 

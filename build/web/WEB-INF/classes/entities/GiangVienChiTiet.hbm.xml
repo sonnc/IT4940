@@ -6,8 +6,11 @@
     <class name="entities.GiangVienChiTiet" table="GiangVienChiTiet" catalog="Project3" optimistic-lock="version">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
+        <property name="maGiangVien" type="int">
+            <column name="MaGiangVien"/>
+        </property>
         <property name="cacMonGiangDay" type="string">
             <column name="CacMonGiangDay" length="45" />
         </property>

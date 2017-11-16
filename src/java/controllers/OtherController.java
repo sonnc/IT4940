@@ -52,12 +52,76 @@ public class OtherController {
             if (transsaction != null) {
                 transsaction.rollback();
             }
+            e.printStackTrace();
         }
         return lstThongBao;
     }
+
+    public List GetAllFile(){
+        List<SinhVienFile> lsFiles = new ArrayList<>();
+        try {
+            transsaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienFile WHERE LoaiFile = 7");
+            lsFiles = q.list();
+            transsaction.commit();
+        } catch (Exception e) {
+             if (transsaction != null) {
+                transsaction.rollback();
+            }
+            e.printStackTrace();
+            
+        }
+        return lsFiles;
+    }
     
-//    public List GetAllFile(){
-//    
-//    }
+    
+    public List GetAllHopThuDen(String email) {
+        List<TinNhanEmail> lstEmails = new ArrayList<>();
+        try {
+            transsaction = session.beginTransaction();
+            Query q = session.createQuery("FROM TinNhanEmail WHERE  NguoiNhan =:emailNhan");
+            q.setParameter("emailNhan", email);
+            lstEmails = q.list();
+            transsaction.commit();
+        } catch (Exception e) {
+            if (transsaction != null) {
+                transsaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return lstEmails;
+    }
+
+    public List GetAllHopThuDi(String email) {
+        List<TinNhanEmail> lstEmails = new ArrayList<>();
+        try {
+            transsaction = session.beginTransaction();
+            Query q = session.createQuery("FROM TinNhanEmail WHERE NguoiGui =:emailGui");
+            q.setParameter("emailGui", email);
+            lstEmails = q.list();
+            transsaction.commit();
+        } catch (Exception e) {
+            if (transsaction != null) {
+                transsaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return lstEmails;
+    }
+
+    public boolean SaveHopThu(TinNhanEmail email) {
+        try {
+            transsaction = session.beginTransaction();
+            session.save(email);
+            transsaction.commit();
+        } catch (Exception e) {
+            if (transsaction != null) {
+                transsaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
 }

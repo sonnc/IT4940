@@ -1,6 +1,9 @@
 package entities;
 // Generated Oct 27, 2017 9:43:57 PM by Hibernate Tools 4.3.1
 
+import java.util.Date;
+
+
 
 
 /**
@@ -11,13 +14,15 @@ public class SinhVienThucTap  implements java.io.Serializable {
 
     private int id;
      private int mssv;
-     private String thoiGianBatDau;
-     private String thoiGianKetThuc;
+     private Date thoiGianBatDau;
+     private Date thoiGianKetThuc;
      private int maCongTy;
      private int nguoiHuongDan;
      private int maDeTai;
-     private boolean trangThai;
+     private int trangThai;
      private double soKhop;
+     private boolean soLanThucTap;
+     private boolean hoatDong;
 
     public SinhVienThucTap() {
     }
@@ -26,7 +31,7 @@ public class SinhVienThucTap  implements java.io.Serializable {
     public SinhVienThucTap(int mssv) {
         this.mssv = mssv;
     }
-    public SinhVienThucTap(int mssv, String thoiGianBatDau, String thoiGianKetThuc, int maCongTy, int nguoiHuongDan, int maDeTai) {
+    public SinhVienThucTap(int mssv, Date thoiGianBatDau, Date thoiGianKetThuc, int maCongTy, int nguoiHuongDan, int maDeTai) {
        this.mssv = mssv;
        this.thoiGianBatDau = thoiGianBatDau;
        this.thoiGianKetThuc = thoiGianKetThuc;
@@ -50,18 +55,18 @@ public class SinhVienThucTap  implements java.io.Serializable {
     public void setMssv(int mssv) {
         this.mssv = mssv;
     }
-    public String getThoiGianBatDau() {
+    public Date getThoiGianBatDau() {
         return this.thoiGianBatDau;
     }
     
-    public void setThoiGianBatDau(String thoiGianBatDau) {
+    public void setThoiGianBatDau(Date thoiGianBatDau) {
         this.thoiGianBatDau = thoiGianBatDau;
     }
-    public String getThoiGianKetThuc() {
+    public Date getThoiGianKetThuc() {
         return this.thoiGianKetThuc;
     }
     
-    public void setThoiGianKetThuc(String thoiGianKetThuc) {
+    public void setThoiGianKetThuc(Date thoiGianKetThuc) {
         this.thoiGianKetThuc = thoiGianKetThuc;
     }
     public int getMaCongTy() {
@@ -86,11 +91,11 @@ public class SinhVienThucTap  implements java.io.Serializable {
         this.maDeTai = maDeTai;
     }
 
-    public boolean getTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(boolean trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
 
@@ -102,7 +107,23 @@ public class SinhVienThucTap  implements java.io.Serializable {
         this.soKhop = soKhop;
     }
 
+    public boolean getSoLanThucTap() {
+        return soLanThucTap;
+    }
 
+    public void setSoLanThucTap(boolean soLanThucTap) {
+        this.soLanThucTap = soLanThucTap;
+    }
+
+    public boolean getHoatDong() {
+        return hoatDong;
+    }
+
+    public void setHoatDong(boolean hoatDong) {
+        this.hoatDong = hoatDong;
+    }
+
+    
 
 
 }

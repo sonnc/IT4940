@@ -49,15 +49,17 @@
                         <ul role="menu" class="sub-menu">
                             <li><a href="./giangvienthuctap/sinhvien.jsp">Danh sách sinh viên</a></li>
                             <li><a href="./giangvienthuctap/detaisinhvien.jsp">Duyệt đề tài sinh viên</a></li>
-                            <li><a href="./giangvienthuctap/quanlyfile.jsp">Quản lý file</a></li>
+                            <li><a href="./giangvienthuctap/diemthi.jsp">Chấm điểm</a></li>
+                            <li><a href="./giangvienthuctap/quanlyfile.jsp">Quản lý file</a></li> 
                         </ul>
-                    </li>                    
+                    </li>
+                                   
                     <li class="dropdown"><a>Thực tập<i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
                             <li><a href="./giangvienthuctap/danhsachcongty.jsp">Danh sách công ty</a></li>
-                            <li><a href="./giangvienthuctap/duyetdetaicongty.jsp">Duyệt đề tài công ty</a></li>
+                            <li><a href="./giangvienthuctap/detai.jsp">Duyệt đề tài công ty</a></li>
                             <li><a href="./giangvienthuctap/lichtrinh.jsp">Lịch trình</a></li>
-                            <li><a href="./giangvienthuctap/email.jsp">Email</a></li>
+                            <li><a href="./email.jsp">Email</a></li>
                         </ul>
                     </li>
                     <!--                    <li><a href="./sinhvien/lichtrinh.jsp">Lịch trình</a></li>                  -->
@@ -67,7 +69,8 @@
                                 <li><a><s:property value="hoTen"/></a></li>
                                 <li><a href="./giangvienthuctap/thongtincanhan.jsp">Thông tin cá nhân</a></li>
                                 <script type="text/javascript">
-                                    window.onload = function () {Clear();
+                                    window.onload = function () {
+                                        Clear();
                                     }
                                     function Clear() {
                                         var Backlen = history.length;
@@ -79,7 +82,7 @@
                             </ul>
                         </li> 
                     </s:iterator>
-                                       
+
                 </ul>
             </div>
             <div class="search">

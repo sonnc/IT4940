@@ -32,21 +32,17 @@
         <%
         } else if (session.getAttribute("role").equals("1")) {
         %>
-        <%@include file="gvhdheader.jsp" %>
+        <%@include file="./giangvienthuctap/gvttheader.jsp" %>
         <%
         } else if (session.getAttribute("role").equals("2")) {
         %>
-        <%@include file="gvttheader.jsp" %>
+        <%@include file="./giangvienhuongdan/gvhdheader.jsp" %>
         <%
         } else if (session.getAttribute("role").equals("3")) {
         %>
         <%@include file="./congty/ctheader.jsp" %>
         <%
-        } else if (session.getAttribute("role").equals("4")) {
-        %>
-        <%@include file="ddctheader.jsp" %>
-        <%
-            }
+        } 
         %>
 
         <section id="home-slider">
@@ -131,24 +127,36 @@
                 <div class="row">
                     <div class="col-md-9 col-sm-7">
                         <div class="row">
-
+                            <style>
+                                #moTa {
+                                    line-height: 1.3em;
+                                    color: #3b5998!important;
+                                    margin: 0 0 5px;
+                                    -webkit-line-clamp: 5;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    display: -webkit-box;
+                                    max-height: 125px;
+                                }
+                            </style>
                             <s:iterator value="lstThongBao">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="single-blog two-column">
                                         <div class="post-content overflow">
-                                            <h2 class="post-title bold"><a href="blogdetails.html"><s:property value="tieuDe"/></a></h2>
+                                            <h2 class="post-title bold"><a href="#"><s:property value="tieuDe"/></a></h2>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="post-thumb">
-                                                        <a href="blogdetails.html"><img style="height: 100%; width: 100%" src="asset/images/bk2017.jpg" class="img-responsive" alt=""></a>
+                                                        <a href="#"><img style="height: 100%; width: 100%" src="asset/images/bk2017.jpg" class="img-responsive" alt=""></a>
                                                         <div class="post-overlay">
-                                                            <span class="uppercase"><a href="#"><s:property value="thoiGian"/></a></span>
+                                                            <span class="uppercase"><a style="margin-left: 8px;font-weight: 700;font-size: 20px;line-height: 30px; position: absolute;op: 50px;" href="#"><s:property value="thoiGian"/></a></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">
                                                     <h3 class="post-author"><a href="#"><s:property value="nguoiDang"/></a></h3>
-                                                    <p><s:property value="noiDung"/></p>
+                                                    <p id="moTa"><s:property value="noiDung"/></p>
                                                     <a href="#" class="read-more">View More</a>
                                                 </div>
                                             </div>
@@ -156,92 +164,23 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </s:iterator>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="single-blog two-column">
-                                    <div class="post-content overflow">
-                                        <h2 class="post-title bold"><a href="blogdetails.html">Thông báo: về việc thực tập doanh nghiệp</a></h2>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="post-thumb">                                                    <a href="blogdetails.html"><img style="height: 100%; width: 100%" src="asset/images/bk2017.jpg" class="img-responsive" alt=""></a>                                                    <div class="post-overlay">
-                                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h3 class="post-author"><a href="#">Posted by ADMIN</a></h3>
-                                                <p>Tất cả sinh viên sau khi nhận đưọc thông báo về việc thực tập doanh nghiệp phải đăng ký thông tin chi tiết và cập nhật thông tin, đăng ký đề tài</p>
-                                                <a href="#" class="read-more">View More</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="single-blog two-column">
-                                    <div class="post-content overflow">
-                                        <h2 class="post-title bold"><a href="blogdetails.html">Thông báo: về việc thực tập doanh nghiệp</a></h2>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="post-thumb">
-                                                    <a href="blogdetails.html"><img style="height: 100%; width: 100%" src="asset/images/bk2017.jpg" class="img-responsive" alt=""></a>
-                                                    <div class="post-overlay">
-                                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h3 class="post-author"><a href="#">Posted by ADMIN</a></h3>
-                                                <p>Tất cả sinh viên sau khi nhận đưọc thông báo về việc thực tập doanh nghiệp phải đăng ký thông tin chi tiết và cập nhật thông tin, đăng ký đề tài</p>
-                                                <a href="#" class="read-more">View More</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="single-blog two-column">
-                                    <div class="post-content overflow">
-                                        <h2 class="post-title bold"><a href="blogdetails.html">Thông báo: về việc thực tập doanh nghiệp</a></h2>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="post-thumb">
-                                                    <a href="blogdetails.html"><img style="height: 100%; width: 100%" src="asset/images/bk2017.jpg" class="img-responsive" alt=""></a>
-                                                    <div class="post-overlay">
-                                                        <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h3 class="post-author"><a href="#">Posted by ADMIN</a></h3>
-                                                <p>Tất cả sinh viên sau khi nhận đưọc thông báo về việc thực tập doanh nghiệp phải đăng ký thông tin chi tiết và cập nhật thông tin, đăng ký đề tài</p>
-                                                <a href="#" class="read-more">View More</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="blog-pagination">
-                            <ul class="pagination">
-                                <li><a href="#">left</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li class="active"><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#">7</a></li>
-                                <li><a href="#">8</a></li>
-                                <li><a href="#">9</a></li>
-                                <li><a href="#">right</a></li>
-                            </ul>
-                        </div>
+                        <!--                        <div class="blog-pagination">
+                                                    <ul class="pagination">
+                                                        <li><a href="#">left</a></li>
+                                                        <li><a href="#">1</a></li>
+                                                        <li><a href="#">2</a></li>
+                                                        <li class="active"><a href="#">3</a></li>
+                                                        <li><a href="#">4</a></li>
+                                                        <li><a href="#">5</a></li>
+                                                        <li><a href="#">6</a></li>
+                                                        <li><a href="#">7</a></li>
+                                                        <li><a href="#">8</a></li>
+                                                        <li><a href="#">9</a></li>
+                                                        <li><a href="#">right</a></li>
+                                                    </ul>
+                                                </div>-->
                     </div>
                     <%@include file="RightSidebar.jsp" %>
 

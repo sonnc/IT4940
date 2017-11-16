@@ -387,7 +387,7 @@ public class SinhvienController {
         List<DeTai> lstDeTai = new ArrayList<>();
         try {
             transaction = session.beginTransaction();
-            Query q = session.createQuery("FROM DeTai WHERE TrangThai = true");
+            Query q = session.createQuery("FROM DeTai WHERE TrangThai = 1");
             lstDeTai = q.list();
             transaction.commit();
         } catch (Exception e) {
@@ -474,7 +474,7 @@ public class SinhvienController {
         List<SinhVienFile> sinhVienFiles = new ArrayList<>();
         try {
             transaction = session.beginTransaction();
-            Query q = session.createQuery("FROM SinhVienThucTap WHERE Mssv =:mssv and TrangThai = true");
+            Query q = session.createQuery("FROM SinhVienThucTap WHERE Mssv =:mssv and TrangThai = 1");
             q.setParameter("mssv", mssv);
             sinhVienFiles = q.list();
             transaction.commit();

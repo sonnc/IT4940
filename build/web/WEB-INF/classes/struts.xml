@@ -9,6 +9,7 @@
             <result name="success" type="redirect">home.jsp</result>
             <result name="input">login.jsp</result>
             <result name="updateInfoSinhVien" type="redirect">/sinhvien/capnhatthongtin.jsp</result>
+            <result name="updateGiangVienThucTap" type="redirect">/giangvien/capnhatthongtin.jsp</result>
         </action>
         <action name="createAccount" class="actions.LoginActions" method="CreateAccount">
             <result name="success" type="redirect">/congty/capnhatthongtin.jsp</result>
@@ -100,12 +101,132 @@
             <result name="success" >/congty/danhsachsinhvien.jsp</result>
             <result name="error">404.html</result>
         </action>
-         <action name="chiTietDeTaiCT" class="actions.SinhvienAction" method="GetChiTietDeTai">
+        <action name="chiTietDeTaiCT" class="actions.SinhvienAction" method="GetChiTietDeTai">
             <result name="success" >/congty/chitietdetai.jsp</result>
             <result name="error">404.html</result>
         </action>
-         <action name="chiTietSinhVien" class="actions.DdctAction" method="GetCVSinhVien">
+        <action name="chiTietSinhVien" class="actions.DdctAction" method="GetCVSinhVien">
             <result name="success" >/congty/CVSinhVien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="DeTaiGVTT" class="actions.GvttAction" method="GetAllDeTai">
+            <result name="success" >/giangvienthuctap/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="chiTietDeTaiGV" class="actions.GvttAction" method="GetChiTietDeTai">
+            <result name="success" >/giangvienthuctap/chitietdetai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="dongYDeTai" class="actions.GvttAction" method="DongYDeTai">
+            <result name="success" >/giangvienthuctap/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="tuChoiDeTai" class="actions.GvttAction" method="TuChoiDeTai">
+            <result name="success" >/giangvienthuctap/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="danhSachDeTaiDongY" class="actions.GvttAction" method="GettAllDeTaiDongY">
+            <result name="success" >/giangvienthuctap/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="danhSachDeTaiTuChoi" class="actions.GvttAction" method="GettAllDeTaiTuChoi">
+            <result name="success" >/giangvienthuctap/detai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getAllCongTyGV" class="actions.GvttAction" method="GetAllCongTy">
+            <result name="success" >/giangvienthuctap/danhsachcongty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="chiTietCongTyGV" class="actions.GvttAction" method="GetChiTietCongTy">
+            <result name="success" >/giangvienthuctap/chitietcongty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GVTTSinhVienThucTap" class="actions.GvttAction" method="GetAllSinhVien">
+            <result name="success" >/giangvienthuctap/sinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="chiTietSinhVienGVTT" class="actions.DdctAction" method="GetCVSinhVien">
+            <result name="success" >/giangvienthuctap/thongtinsinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="DuyetDeTaiSinhVien" class="actions.GvttAction" method="GetAllDeTaiSinhVien">
+            <result name="success" >/giangvienthuctap/detaisinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="duyetDeTaiSV" class="actions.GvttAction" method="DuyetDeTaiSV">
+            <result name="success" >/giangvienthuctap/detaisinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="danhSachDeTaiSinhVienDongY" class="actions.GvttAction" method="GetAllDeTaiSinhVienThanhCong">
+            <result name="success" >/giangvienthuctap/danhsachsvdt.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GVTTSinhVienThucTapDiemThi" class="actions.GvttAction" method="ChamDiemSinhVien">
+            <result name="success" >/giangvienthuctap/diemthi.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="capNhatDiemThi" class="actions.GvttAction" method="UpdateDiemThi">
+            <result name="success" >/giangvienthuctap/diemthi.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GVTTGetAllDiemThi" class="actions.GvttAction" method="GetAllDiemSinhVien">
+            <result name="success" >/giangvienthuctap/danhsachdiemthi.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getAllFileGVTT" class="actions.GvttAction" method="GetAllFile">
+            <result name="success" >/giangvienthuctap/quanlyfile.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="uploadFileGiangVien" class="actions.GvttAction" method="UploadFileSinhVien">
+            <result name="success" >/giangvienthuctap/quanlyfile.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GetAllLichTrinh" class="actions.GvttAction" method="GetAllLichTrinh">
+            <result name="success" >/giangvienthuctap/lichtrinh.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="DangLichTrinh" class="actions.GvttAction" method="DangLichTrinh">
+            <result name="success" >/giangvienthuctap/lichtrinh.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GetAllEmail" class="actions.OtherAction" method="GetAllHopThu">
+            <result name="success" >/email.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GuiEmail" class="actions.OtherAction" method="SaveHopThu">
+            <result name="success" >/email.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="giangVienThucTapLogout" class="actions.GvttAction" method="Logout">
+            <result name="success" >/login.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="giangVienHuongDanLogout" class="actions.GvhdAction" method="Logout">
+            <result name="success" >/login.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GVHDSinhVienThucTap" class="actions.GvhdAction" method="GetAllSinhVien">
+            <result name="success" >/giangvienhuongdan/sinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="chiTietSinhVienGVHD" class="actions.GvhdAction" method="GetCVSinhVien">
+            <result name="success" >/giangvienhuongdan/thongtinsinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GVHDSinhVienThucTapDiemThi" class="actions.GvhdAction" method="GetAllDiemSinhVien">
+            <result name="success" >/giangvienhuongdan/diemthi.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="GVHDFile" class="actions.GvhdAction" method="GetAllDiemSinhVien">
+            <result name="success" >/giangvienhuongdan/danhgiachamcong.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="ChamDiemSinhVien" class="actions.GvhdAction" method="ChamDiemSinhVien">
+            <result name="success" >/giangvienhuongdan/diemthi.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="upFileByGVHD" class="actions.GvhdAction" method="DanhGiaChamCong">
+            <result name="success" >/giangvienhuongdan/danhgiachamcong.jsp</result>
             <result name="error">404.html</result>
         </action>
     </package>

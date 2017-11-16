@@ -17,5 +17,11 @@
         <property name="trangThai" type="java.lang.Boolean">
             <column name="TrangThai" />
         </property>
+         <property name="diemPhanHoi" type="java.lang.Double">
+            <column name="DiemPhanHoi" precision="22" scale="0" />
+        </property>
+         <property name="diemBaoCaoQuaTrinh" type="java.lang.Double">
+            <column name="DiemBaoCaoQuaTrinh" precision="22" scale="0" />
+        </property>
     </class>
 </hibernate-mapping>

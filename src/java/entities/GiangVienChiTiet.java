@@ -10,6 +10,7 @@ public class GiangVienChiTiet  implements java.io.Serializable {
 
 
      private int id;
+     private int maGiangVien;
      private String cacMonGiangDay;
      private String huongNghienCuu;
      private String cacCongTrinhNghienCuu;
@@ -23,8 +24,9 @@ public class GiangVienChiTiet  implements java.io.Serializable {
     public GiangVienChiTiet(int id) {
         this.id = id;
     }
-    public GiangVienChiTiet(int id, String cacMonGiangDay, String huongNghienCuu, String cacCongTrinhNghienCuu, String sachXuatBan, String khac) {
+    public GiangVienChiTiet(int id, int maGiangVien, String cacMonGiangDay, String huongNghienCuu, String cacCongTrinhNghienCuu, String sachXuatBan, String khac) {
        this.id = id;
+       this.maGiangVien = maGiangVien;
        this.cacMonGiangDay = cacMonGiangDay;
        this.huongNghienCuu = huongNghienCuu;
        this.cacCongTrinhNghienCuu = cacCongTrinhNghienCuu;
@@ -73,6 +75,14 @@ public class GiangVienChiTiet  implements java.io.Serializable {
     
     public void setKhac(String khac) {
         this.khac = khac;
+    }
+
+    public int getMaGiangVien() {
+        return maGiangVien;
+    }
+
+    public void setMaGiangVien(int maGiangVien) {
+        this.maGiangVien = maGiangVien;
     }
 
 

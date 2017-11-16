@@ -6,7 +6,7 @@
     <class name="entities.TinNhanEmail" table="TinNhanEmail" catalog="Project3" optimistic-lock="version">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="nguoiGui" type="string">
             <column name="NguoiGui" length="45" />
@@ -20,8 +20,14 @@
         <property name="noiDung" type="string">
             <column name="NoiDung" length="45" />
         </property>
-        <property name="thoiGian" type="string">
+        <property name="thoiGian" type="timestamp">
             <column name="ThoiGian" length="45" />
+        </property>
+        <property name="loaiEmail" type="java.lang.Boolean">
+            <column name="LoaiEmail" />
+        </property>
+        <property name="mssv" type="int">
+            <column name="Mssv" />
         </property>
     </class>
 </hibernate-mapping>

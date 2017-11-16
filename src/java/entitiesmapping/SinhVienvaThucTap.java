@@ -25,18 +25,19 @@ public class SinhVienvaThucTap {
     private String diaChi;
     private boolean lapTop;
     private int id; // mã xếp của sinh viên
-    private String thoiGianBatDau;
-    private String thoiGianKetThuc;
+    private Date thoiGianBatDau;
+    private Date thoiGianKetThuc;
     private int maCongTy;
     private int nguoiHuongDan;
     private int maDeTai;
     private boolean trangThai;
     private double soKhop;
+    private int soLanThucTap;
 
     public SinhVienvaThucTap() {
     }
 
-    public SinhVienvaThucTap(int mssv, String hoTen, String lop, int khoa, String vienKhoa, String email, int dienThoai, String avatar, Date ngaySinh, String diaChi, boolean lapTop, int id, String thoiGianBatDau, String thoiGianKetThuc, int maCongTy, int nguoiHuongDan, int maDeTai, boolean trangThai, double soKhop) {
+    public SinhVienvaThucTap(int mssv, String hoTen, String lop, int khoa, String vienKhoa, String email, int dienThoai, String avatar, Date ngaySinh, String diaChi, boolean lapTop, int id, Date thoiGianBatDau, Date thoiGianKetThuc, int maCongTy, int nguoiHuongDan, int maDeTai, boolean trangThai, double soKhop) {
         this.mssv = mssv;
         this.hoTen = hoTen;
         this.lop = lop;
@@ -154,19 +155,19 @@ public class SinhVienvaThucTap {
         this.id = id;
     }
 
-    public String getThoiGianBatDau() {
+    public Date getThoiGianBatDau() {
         return thoiGianBatDau;
     }
 
-    public void setThoiGianBatDau(String thoiGianBatDau) {
+    public void setThoiGianBatDau(Date thoiGianBatDau) {
         this.thoiGianBatDau = thoiGianBatDau;
     }
 
-    public String getThoiGianKetThuc() {
+    public Date getThoiGianKetThuc() {
         return thoiGianKetThuc;
     }
 
-    public void setThoiGianKetThuc(String thoiGianKetThuc) {
+    public void setThoiGianKetThuc(Date thoiGianKetThuc) {
         this.thoiGianKetThuc = thoiGianKetThuc;
     }
 
@@ -208,6 +209,14 @@ public class SinhVienvaThucTap {
 
     public void setSoKhop(double soKhop) {
         this.soKhop = soKhop;
+    }
+
+    public int getSoLanThucTap() {
+        return soLanThucTap;
+    }
+
+    public void setSoLanThucTap(int soLanThucTap) {
+        this.soLanThucTap = soLanThucTap;
     }
     
     

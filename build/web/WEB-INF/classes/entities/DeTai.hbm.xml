@@ -23,7 +23,7 @@
         <property name="nguoiDang" type="string">
             <column name="NguoiDang" />
         </property>
-        <property name="trangThai" type="java.lang.Boolean">
+        <property name="trangThai" type="int">
             <column name="TrangThai" />
         </property>
         <property name="soLuong" type="int">
