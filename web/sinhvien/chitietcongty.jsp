@@ -49,9 +49,7 @@
                                                 <div class="post-thumb">
                                                     <s:iterator value="lstCongTy">
                                                         <a href="#"><img style="height: 100%; width: 100%" src="<s:property value="avatar"/>" class="img-responsive" alt="<s:property value="avatar"/>"></a>
-                                                        <div class="btn">
-                                                            <a href="capnhatthongtin.jsp" class="btn btn-common uppercase">Cập nhật ?</a>
-                                                        </div>
+                                                     
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">

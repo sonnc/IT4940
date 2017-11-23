@@ -470,6 +470,7 @@ public class SinhvienController {
         }
         return sinhVienFiles;
     }
+
     public List GetDeTaiSinhVienTRUE(int mssv) {
         List<SinhVienFile> sinhVienFiles = new ArrayList<>();
         try {
@@ -501,7 +502,22 @@ public class SinhvienController {
         }
         return true;
     }
-    
-   
+
+    public List DanhSachDeTaiSVDK(int mssv) {
+        List<SinhVienFile> sinhVienFiles = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienThucTap WHERE Mssv =:mssv and HoatDong = TRUE");
+            q.setParameter("mssv", mssv);
+            sinhVienFiles = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return sinhVienFiles;
+    }
 
 }

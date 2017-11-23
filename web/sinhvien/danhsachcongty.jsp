@@ -58,7 +58,7 @@
                                 <s:iterator value="lstCongTySV">
                                     <div class="media">
                                         <div class="pull-left">
-                                            <a href="#"><img src="asset/images/home/profile1.png" alt=""></a>
+                                            <a href="chiTietCongTy?maCongTy=<s:property value="msct"/>"><img style="height: 81px; width: 81px" src="<s:property value="avatar"/>" alt=""></a>
                                         </div>
                                         <div class="media-body">
                                             <blockquote style="margin: 0 0 0px;"><a href="chiTietCongTy?maCongTy=<s:property value="msct"/>"><s:property value="tenCongTy"/></a></blockquote>
@@ -69,52 +69,6 @@
                                         </div>
                                     </div>
                                 </s:iterator>
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <a href="#"><img src="asset/images/home/profile1.png" alt=""></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <blockquote><a href="#">Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</a></blockquote>
-                                        <h3><a href="#">- Jhon Kalis</a></h3>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <a href="#"><img src="asset/images/home/profile1.png" alt=""></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <blockquote><a href="#">Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</a></blockquote>
-                                        <h3><a href="#">- Jhon Kalis</a></h3>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <a href="#"><img src="asset/images/home/profile1.png" alt=""></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <blockquote><a href="#">Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</a></blockquote>
-                                        <h3><a href="#">- Jhon Kalis</a></h3>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <a href="#"><img src="asset/images/home/profile1.png" alt=""></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <blockquote><a href="#">Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</a></blockquote>
-                                        <h3><a href="#">- Jhon Kalis</a></h3>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="pull-left">
-                                        <a href="#"><img src="asset/images/home/profile1.png" alt=""></a>
-                                    </div>
-                                    <div class="media-body">
-                                        <blockquote><a href="#">Nisi commodo bresaola, leberkas venison eiusmod bacon occaecat labore tail.</a></blockquote>
-                                        <h3><a href="#">- Jhon Kalis</a></h3>
-                                    </div>
-                                </div>
-
                             </div>
 
                         </div>

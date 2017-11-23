@@ -57,7 +57,7 @@ public class OtherController {
         return lstThongBao;
     }
 
-    public List GetAllFile(){
+    public List GetAllFile() {
         List<SinhVienFile> lsFiles = new ArrayList<>();
         try {
             transsaction = session.beginTransaction();
@@ -65,16 +65,15 @@ public class OtherController {
             lsFiles = q.list();
             transsaction.commit();
         } catch (Exception e) {
-             if (transsaction != null) {
+            if (transsaction != null) {
                 transsaction.rollback();
             }
             e.printStackTrace();
-            
+
         }
         return lsFiles;
     }
-    
-    
+
     public List GetAllHopThuDen(String email) {
         List<TinNhanEmail> lstEmails = new ArrayList<>();
         try {
@@ -124,4 +123,20 @@ public class OtherController {
         return true;
     }
 
+    public List GetPass(String email) {
+        List<Login> l = new ArrayList<>();
+        try {
+            transsaction = session.beginTransaction();
+            Query q = session.createQuery("FROM Login WHERE Email =:email");
+            q.setParameter("email", email);
+            l = q.list();
+            transsaction.commit();
+        } catch (Exception e) {
+            if (transsaction != null) {
+                transsaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return l;
+    }
 }

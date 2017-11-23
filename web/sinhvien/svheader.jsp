@@ -47,17 +47,15 @@
                     <li class="active"><a href="home.jsp">Trang chủ</a></li>
                     <li class="dropdown"><a>Sinh viên<i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
-                            <li><a href="./sinhvien/diemthi.jsp">Điểm thi</a></li>
-                            <li><a href="./sinhvien/baocao.jsp">Báo cáo</a></li>
-                            <li><a href="./sinhvien/email.jsp">Email</a></li>
+                            <li><a href="./sinhvien/diemthi.jsp">Điểm thi</a></li> 
+                            <li><a href="./sinhvien/filesinhvien.jsp">File sinh viên</a></li>
+                            <li><a href="./email.jsp">Email</a></li>
                         </ul>
                     </li>                    
                     <li class="dropdown"><a>Thực tập <i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
                             <li><a href="./sinhvien/danhsachcongty.jsp">Công ty</a></li>
                             <li><a href="./sinhvien/detai.jsp">Đề tài</a></li>
-                            <li><a href="./sinhvien/filesinhvien.jsp">File sinh viên</a></li>
-                            <li><a href="./sinhvien/lichtrinh.jsp">Lịch trình</a></li>
                         </ul>
                     </li>
                     <!--                    <li><a href="./sinhvien/lichtrinh.jsp">Lịch trình</a></li>                  -->
@@ -67,7 +65,8 @@
                                 <li><a><s:property value="hoTen"/></a></li>
                                 <li><a href="./sinhvien/thongtinsinhvien.jsp">Thông tin cá nhân</a></li>
                                 <script type="text/javascript">
-                                    window.onload = function () {Clear();
+                                    window.onload = function () {
+                                        Clear();
                                     }
                                     function Clear() {
                                         var Backlen = history.length;
@@ -79,7 +78,7 @@
                             </ul>
                         </li> 
                     </s:iterator>
-                                       
+
                 </ul>
             </div>
             <div class="search">

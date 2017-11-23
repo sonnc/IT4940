@@ -62,6 +62,14 @@
                                                     </form>
                                                 </div>
                                                 <div class="post-thumb">
+                                                    <h3 style="margin-top: 50px">XUẤT FILE</h3>
+                                                    <p>Xuất toàn bộ thông tin sinh sinh viên ra file EXCEL (Thông tin sinh viên, đề tài thực tập sinh viên, điểm thi, các file báo cáo và file liên quan đến thực tập sinh viên)</p>
+                                                    <a href="XuatFileExcel"><input class="btn btn-submit" value="Xuất file" type="submit"></a>
+                                                     <s:iterator value="lstFileChiTiet">
+                                                        <p>[<s:property value="ngayThang"/>] <s:property value="tenFile"/>: <a href="<s:property value="link"/>">TẢI XUỐNG</a></p>
+                                                    </s:iterator>
+                                                </div>
+                                                <div class="post-thumb">
                                                     <h3 style="margin-top: 50px">FILE GIẢNG VIÊN</h3>
                                                     <s:iterator value="lstGiangVienFile">
                                                         <p>[<s:property value="ngayThang"/>] <s:property value="tenFile"/>: <a href="<s:property value="link"/>">TẢI XUỐNG</a></p>

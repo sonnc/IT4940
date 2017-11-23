@@ -139,7 +139,7 @@ public class SinhVienvaThucTap {
         this.diaChi = diaChi;
     }
 
-    public boolean isLapTop() {
+    public boolean getLapTop() {
         return lapTop;
     }
 
@@ -195,7 +195,7 @@ public class SinhVienvaThucTap {
         this.maDeTai = maDeTai;
     }
 
-    public boolean isTrangThai() {
+    public boolean getTrangThai() {
         return trangThai;
     }
 

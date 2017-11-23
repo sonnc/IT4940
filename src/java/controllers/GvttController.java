@@ -723,6 +723,21 @@ public class GvttController {
         }
         return sinhVienFiles;
     }
+    public List GetFileExcel() {
+        List<SinhVienFile> sinhVienFiles = new ArrayList<>();
+        try {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("FROM SinhVienFile WHERE LoaiFile =8");
+            sinhVienFiles = q.list();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return sinhVienFiles;
+    }
 
     public boolean SaveThongBaoLichTrinh(ThongBao thongBao) {
         try {

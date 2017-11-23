@@ -131,17 +131,17 @@ copyright
                                     <div class="sminputs">
                                         <div class="input full">
                                             <label class="string optional" for="user-name">Email*</label>
-                                            <input name="email" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                            <input name="email" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="150" />
                                         </div>
                                     </div>
                                     <div class="sminputs">
                                         <div class="input string optional">
                                             <label class="string optional" for="user-pw">Mật khẩu *</label>
-                                            <input name="password" class="string optional" maxlength="255" id="user-pw" placeholder="Password" type="text" size="50" />
+                                            <input name="password" class="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="150" />
                                         </div>
                                         <div class="input string optional">
                                             <label class="string optional" for="user-pw-repeat">Nhập lại mật khẩu *</label>
-                                            <input name="repeatPassword" class="string optional" maxlength="255" id="user-pw-repeat" placeholder="Repeat password" type="text" size="50" />
+                                            <input name="repeatPassword" class="string optional" maxlength="255" id="user-pw-repeat" placeholder="Repeat password" type="password" size="150" />
                                         </div>
                                     </div>
                                     <div class="simform__actions">
@@ -161,19 +161,19 @@ copyright
                                     <div class="sminputs">
                                         <div class="input full">
                                             <label class="string optional" for="user-name">Email*</label>
-                                            <s:textfield name="email" cssClass="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                            <s:textfield name="email" cssClass="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="150" />
                                         </div>
                                     </div>
                                     <div class="sminputs">
                                         <div class="input full">
                                             <label class="string optional" for="user-pw">Mật khẩu *</label>
-                                            <s:textfield name="password" cssClass="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="50" />
+                                            <s:textfield name="password" cssClass="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="150" />
                                             <span class="hide-password">Hiện</span>
                                         </div>
                                     </div>
                                     <div class="simform__actions">
                                         <input class="sumbit" type="submit" value="Đăng nhập"/>
-                                        <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Quên mật khẩu?<br> Nhấn vào đây</a></span>
+                                        <span class="simform__actions-sidetext"><a class="special" role="link" href="quenmatkhau.jsp">Quên mật khẩu?<br> Nhấn vào đây</a></span>
                                     </div> 
                                 </form>
                             </div> 

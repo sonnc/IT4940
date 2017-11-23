@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="action">
                             <div class="col-sm-12">
-                                <h1 class="title">DANH SÁCH ĐỀ TÀI</h1>
+                                <h1 class="title">DUYỆT ĐỀ TÀI SINH VIÊN</h1>
                             </div>
                         </div>
                     </div>

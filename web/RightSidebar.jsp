@@ -30,22 +30,12 @@
         <div class="sidebar-item categories">
             <h3>Tài liệu</h3>
             <s:iterator value="%{#session.lstFile}">
-                <ul class="nav navbar-stacked" style="height: 150px; overflow:auto">
+                <ul class="nav navbar-stacked" style="height: 100px; overflow:auto">
                     <li ><a href="<s:property value="link"/>"><s:property value="tenFile"/><span class="pull-right"><s:property value="ngayThang"/></span></a></li>
                 </ul>
             </s:iterator>
         </div>
-        <div class="sidebar-item tag-cloud">
-            <h3>Tag Cloud</h3>
-            <ul class="nav nav-pills">
-                <li><a href="#">Corporate</a></li>
-                <li><a href="#">Joomla</a></li>
-                <li><a href="#">Abstract</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Product</a></li>
-            </ul>
-        </div>
+        
         <div class="sidebar-item popular">
             <h3>Trường đối tác</h3>
             <ul class="gallery">

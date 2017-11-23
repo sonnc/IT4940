@@ -45,10 +45,11 @@
                                     <div class="post-content overflow">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <div class="post-thumb">
-                                                    <a href="blogdetails.html"><img style="height: 100%; width: 100%" src="asset/images/blog/7.jpg" class="img-responsive" alt=""></a>
-
-                                                </div>
+                                                <s:iterator value="%{#session.sinhVien}">
+                                                    <div class="post-thumb">
+                                                        <a href="blogdetails.html"><img style="height: 100%; width: 100%" src="<s:property value="avatar"/>" class="img-responsive" alt=""></a>
+                                                    </div>
+                                                </s:iterator>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="project-name overflow">
@@ -97,8 +98,8 @@
                                                                 <th style="text-align: center">Cuối kỳ</th> 
                                                             </tr>
                                                             <tr style="font-size: 40px; color: red; font-style: oblique; text-align: center">
-                                                                <td><strong><s:property value="quaTrinh"/></strong></td>
-                                                                <td><strong><s:property value="cuoiKy"/></strong></td>
+                                                                <td style="padding-top: 15px"><strong><s:property value="quaTrinh"/></strong></td>
+                                                                <td  style="padding-top: 15px"><strong><s:property value="cuoiKy"/></strong></td>
                                                             </tr>
                                                         </table>    
                                                     </s:iterator>
@@ -139,7 +140,7 @@
 
                                                 <div class="project-info overflow">
                                                     <h5><strong> THÔNG TIN CHI TIẾT</strong></h5>
-                                                    <div id="tab-container">
+<!--                                                    <div id="tab-container">
                                                         <ul id="tab2" class="nav nav-pills">
                                                             <li class="active"><a href="#tab2-item1" data-toggle="tab" aria-expanded="true">Quá trình</a></li>
                                                             <li class=""><a href="#tab2-item2" data-toggle="tab" aria-expanded="false">Cuối kỳ</a></li>
@@ -156,7 +157,7 @@
                                                                 <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
 
 

@@ -12,9 +12,8 @@
 
 <html>
     <head>
-        <%@include file="head.jsp" %>
+        <%@include file="../head.jsp" %>
     </head>
-
     <%    if (session.getAttribute("SQLHome") == null) {
     %>
     <s:action name="actionHome" executeResult="true"/>

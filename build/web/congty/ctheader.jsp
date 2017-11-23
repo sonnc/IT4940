@@ -55,7 +55,7 @@
                     <li class="dropdown"><a>Sinh viên<i class="fa fa-angle-down"></i></a>
                         <ul role="menu" class="sub-menu">
                             <li><a href="congty/danhsachsinhvien.jsp">Sinh viên</a></li>
-                            <li><a href="congty/email.jsp">Email</a></li>
+                            <li><a href="./email.jsp">Email</a></li>
                         </ul>
                     </li>
                     <!--                    <li><a href="./sinhvien/lichtrinh.jsp">Lịch trình</a></li>                  -->

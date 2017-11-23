@@ -10,6 +10,7 @@
             <result name="input">login.jsp</result>
             <result name="updateInfoSinhVien" type="redirect">/sinhvien/capnhatthongtin.jsp</result>
             <result name="updateGiangVienThucTap" type="redirect">/giangvien/capnhatthongtin.jsp</result>
+            <result name="quanTriAdmin" type="redirect">/admin/quantri.jsp</result>
         </action>
         <action name="createAccount" class="actions.LoginActions" method="CreateAccount">
             <result name="success" type="redirect">/congty/capnhatthongtin.jsp</result>
@@ -62,6 +63,10 @@
         </action>
         <action name="uploadFile" class="actions.SinhvienAction" method="UploadFileSinhVien">
             <result name="success" >/sinhvien/filesinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getSoLuongDeTaiDK" class="actions.SinhvienAction" method="GetAllDeTaiSVDK">
+            <result name="success" >/sinhvien/danhsachdkdt.jsp</result>
             <result name="error">404.html</result>
         </action>
         <action name="capNhatThongTinDDCT" class="actions.DdctAction" method="CapNhatDDCT">
@@ -229,5 +234,89 @@
             <result name="success" >/giangvienhuongdan/danhgiachamcong.jsp</result>
             <result name="error">404.html</result>
         </action>
+        
+        
+        <action name="QuanLyTaiKhoan" class="actions.AdminAction" method="GetAllTaiKhoan">
+            <result name="success" >/admin/quanlytaikhoan.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaTaiKhoan" class="actions.AdminAction" method="XoaTaiKhoan">
+            <result name="success"  type="redirect">/admin/quanlytaikhoan.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="addTaikhoan" class="actions.AdminAction" method="AddTaiKhoan">
+            <result name="success"  type="redirect">/admin/quanlytaikhoan.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="resetPass" class="actions.AdminAction" method="ResetPass">
+            <result name="success"  type="redirect">/admin/quanlytaikhoan.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLySinhVien" class="actions.AdminAction" method="GetAllSinhVien">
+            <result name="success" >/admin/quanlysinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLyDiem" class="actions.AdminAction" method="GetAllDiem">
+            <result name="success" >/admin/quanlydiem.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaDiem" class="actions.AdminAction" method="XoaDiemSinhVien">
+            <result name="success" >/admin/quanlydiem.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLyGiangVien" class="actions.AdminAction" method="GetAllGiangVien">
+            <result name="success" >/admin/quanlygiangvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaGiangVien" class="actions.AdminAction" method="XoaGiangVien">
+            <result name="success" >/admin/quanlygiangvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLyCongTy" class="actions.AdminAction" method="GetAllCongTy">
+            <result name="success" >/admin/quanlycongty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaCongTy" class="actions.AdminAction" method="XoaCongTy">
+            <result name="success" >/admin/quanlycongty.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLyDeTai" class="actions.AdminAction" method="GetAllDeTai">
+            <result name="success" >/admin/quanlydetai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaDeTai" class="actions.AdminAction" method="XoaDeTai">
+            <result name="success" >/admin/quanlydetai.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLyThongBao" class="actions.AdminAction" method="GetAllThongBao">
+            <result name="success" >/admin/quanlythongbao.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="xoaThongBao" class="actions.AdminAction" method="XoaThongBao">
+            <result name="success" >/admin/quanlythongbao.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="QuanLyLogs" class="actions.AdminAction" method="GetAllLogs">
+            <result name="success" >/admin/quanlylogs.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="logoutAdmin" class="actions.AdminAction" method="LogoutAdmin">
+            <result name="success" type="redirect">/login.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        <action name="getPass" class="actions.OtherAction" method="GetPass">
+            <result name="success" type="redirect">/quenmatkhau.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        
+        
+        
+        <action name="XuatFileExcel" class="actions.GvttAction" method="XuatFileExcel">
+            <result name="success" type="redirect">/giangvienthuctap/quanlyfile.jsp</result>
+            <result name="error">404.html</result>
+        </action>
+        
+        
+        
     </package>
 </struts>

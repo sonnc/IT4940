@@ -66,7 +66,7 @@
                                     <div class="col-md-12">
                                         <div class="post-content overflow" style="padding: 0px">
                                             <h2 class="post-title bold">
-                                                <a href="chiTietSinhVienGV?mssv=<s:property value="mssv"/>" style="font-size: 20px">
+                                                <a href="chiTietSinhVienGVTT?mssv=<s:property value="mssv"/>" style="font-size: 20px">
                                                     <s:property value="mssv"/> - <s:property value="hoTen"/> - <s:property value="lop"/> - K<s:property value="khoa"/> - <strong style="color: red"><s:property value="chiSoSoKhop"/></strong>
                                                 </a></h2>
                                             <p id="moTa">Tên đề tài <s:property value="tenDeTai"/></p>

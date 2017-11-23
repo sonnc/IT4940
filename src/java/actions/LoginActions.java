@@ -16,18 +16,21 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import controllers.LogController;
 import entities.DaiDienCongTy;
 import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author sonnguyen
  */
-public class LoginActions extends ActionSupport implements SessionAware, ServletRequestAware {
+public class LoginActions extends ActionSupport implements SessionAware, ServletRequestAware, ServletResponseAware {
 
     private HttpServletRequest request;
+    private HttpServletResponse response;
     private Map<String, Object> session;
     private LoginController loginController;
     private SinhvienController sinhvienController;
@@ -42,6 +45,14 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
     private List<Login> lstLogin = new ArrayList<>();
     private List<GiangVien> lstGiangVienThucTap = new ArrayList<>();
     private List<GiangVienHuongDan> lstGiangVienHuongDan = new ArrayList<>();
+
+    public HttpServletResponse getResponse() {
+        return response;
+    }
+
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
+    }
 
     public List<GiangVien> getLstGiangVienThucTap() {
         return lstGiangVienThucTap;
@@ -162,6 +173,7 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
                 session.put("role", "3");
             } else if (lstLogin.get(0).getRule() == 4) {
                 session.put("role", "4");
+                return "quanTriAdmin";
             }
         } else {
             logController.Log(email, "Đăng nhập thất bại: lỗi tài khoản hoặc mật khẩu không đúng");
@@ -206,6 +218,11 @@ public class LoginActions extends ActionSupport implements SessionAware, Servlet
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    @Override
+    public void setServletResponse(HttpServletResponse hsr) {
+        this.response = hsr;
     }
 
 }

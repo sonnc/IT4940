@@ -50,9 +50,18 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
     private List<DaiDienCongTy> lstDaiDienCongTy = new ArrayList<>();
     private List<GiangVienHuongDan> lstGiangVienHuongDan = new ArrayList<>();
     private List<CongTyDeTai> lstCTDT = new ArrayList<>();
+    private List<CongTyDeTai> lstDanhSachDeTaiDK = new ArrayList<>();
     private List<SinhVien> lstSinhVien = new ArrayList<>();
     private List<SinhVienFile> lstSinhVienFile = new ArrayList<>();
     private SinhVienFile sinhVienFile = new SinhVienFile();
+
+    public List<CongTyDeTai> getLstDanhSachDeTaiDK() {
+        return lstDanhSachDeTaiDK;
+    }
+
+    public void setLstDanhSachDeTaiDK(List<CongTyDeTai> lstDanhSachDeTaiDK) {
+        this.lstDanhSachDeTaiDK = lstDanhSachDeTaiDK;
+    }
 
     public String getTenFile() {
         return tenFile;
@@ -565,10 +574,7 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
                 if (phanTram >= 85) {
                     sinhVienThucTap.setTrangThai(1);
                     sinhVienThucTap.setSoLanThucTap(true);
-                } else if (phanTram <= 45) {
-                    sinhVienThucTap.setTrangThai(2);
-                    sinhVienThucTap.setSoLanThucTap(false);
-                } else {
+                }  else {
                     sinhVienThucTap.setTrangThai(0);
                     sinhVienThucTap.setSoLanThucTap(false);
                 }
@@ -627,9 +633,6 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
                         if (phanTram >= 80) {
                             sinhVienThucTap.setTrangThai(1);
                             sinhVienThucTap.setSoLanThucTap(true);
-                        } else if (phanTram <= 45) {
-                            sinhVienThucTap.setTrangThai(2);
-                            sinhVienThucTap.setSoLanThucTap(false);
                         } else {
                             sinhVienThucTap.setTrangThai(0);
                             sinhVienThucTap.setSoLanThucTap(false);
@@ -707,6 +710,36 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
             return SUCCESS;
         }
         return ERROR;
+    }
+
+    public String GetAllDeTaiSVDK() {
+        int mssv = (int) session.get("mssv");
+        List<SinhVienThucTap> lstSinhVienThucTaps = new ArrayList<>();
+        lstSinhVienThucTaps = sinhvienController.DanhSachDeTaiSVDK(mssv);
+        lstDeTai = sinhvienController.GetAllDeTai();
+        lstCongTy = sinhvienController.GetAllCongTy();
+        for (int i = 0; i < lstCongTy.size(); i++) {
+            for (int j = 0; j < lstDeTai.size(); j++) {
+                for (int k = 0; k < lstSinhVienThucTaps.size(); k++) {
+                    if (lstCongTy.get(i).getMsct() == lstDeTai.get(j).getMaCongTy() && lstDeTai.get(i).getId() == lstSinhVienThucTaps.get(k).getMaDeTai()) {
+                        CongTyDeTai congTyDeTai = new CongTyDeTai();
+                        congTyDeTai.setTenCongTy(lstCongTy.get(i).getTenCongTy());
+                        congTyDeTai.setAvatar(lstCongTy.get(i).getAvatar());
+                        congTyDeTai.setMsct(lstCongTy.get(i).getMsct());
+                        congTyDeTai.setId(lstDeTai.get(j).getId()); // mã đề tài
+                        congTyDeTai.setTenDeTai(lstDeTai.get(j).getTenDeTai());
+                        congTyDeTai.setNoiDung(lstDeTai.get(j).getNoiDung());
+                        congTyDeTai.setYeuCau(lstDeTai.get(j).getYeuCau());
+                        congTyDeTai.setSoLuong(lstDeTai.get(j).getSoLuong());
+                        lstDanhSachDeTaiDK.add(congTyDeTai);
+                    }
+                }
+
+            }
+        }
+        
+        session.put("DeTai", "DeTai");
+        return SUCCESS;
     }
 
     public String LogOut() {

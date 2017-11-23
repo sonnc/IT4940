@@ -14,13 +14,14 @@ import controllers.*;
 import entities.*;
 import java.util.ArrayList;
 import java.util.List;
+import util.SendSMS;
 
 /**
  *
  * @author sonnguyen
  */
 public class OtherAction extends ActionSupport implements SessionAware, ServletRequestAware {
-    
+
     private HttpServletRequest request;
     private Map<String, Object> session;
     private OtherController otherController;
@@ -30,67 +31,67 @@ public class OtherAction extends ActionSupport implements SessionAware, ServletR
     private List<TinNhanEmail> lstHopThuDen = new ArrayList<>();
     private List<TinNhanEmail> lstHopThuDi = new ArrayList<>();
     private List<SinhVienFile> lstFile = new ArrayList<>();
-    
+
     public List<SinhVienFile> getLstFile() {
         return lstFile;
     }
-    
+
     public void setLstFile(List<SinhVienFile> lstFile) {
         this.lstFile = lstFile;
     }
-    
+
     public List<TinNhanEmail> getLstHopThuDen() {
         return lstHopThuDen;
     }
-    
+
     public void setLstHopThuDen(List<TinNhanEmail> lstHopThuDen) {
         this.lstHopThuDen = lstHopThuDen;
     }
-    
+
     public List<TinNhanEmail> getLstHopThuDi() {
         return lstHopThuDi;
     }
-    
+
     public void setLstHopThuDi(List<TinNhanEmail> lstHopThuDi) {
         this.lstHopThuDi = lstHopThuDi;
     }
-    
+
     public List<ThongBao> getLstThongBao() {
         return lstThongBao;
     }
-    
+
     public void setLstThongBao(List<ThongBao> lstThongBao) {
         this.lstThongBao = lstThongBao;
     }
-    
+
     public List<CongTy> getLstCongTy() {
         return lstCongTy;
     }
-    
+
     public void setLstCongTy(List<CongTy> lstCongTy) {
         this.lstCongTy = lstCongTy;
     }
-    
+
     public HttpServletRequest getRequest() {
         return request;
     }
-    
+
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-    
+
     public CongTy getCongTy() {
         return congTy;
     }
-    
+
     public void setCongTy(CongTy congTy) {
         this.congTy = congTy;
     }
-    
+
     public OtherAction() {
         otherController = new OtherController();
     }
-    
+
     public String GetAllHome() {
         lstCongTy = otherController.GetAllCongTy();
         lstThongBao = otherController.GetAllThongBao();
@@ -100,7 +101,7 @@ public class OtherAction extends ActionSupport implements SessionAware, ServletR
         session.put("SQLHome", "SQLHome");
         return SUCCESS;
     }
-    
+
     public String GetAllHopThu() {
         String email = (String) session.get("email");
         lstHopThuDen = otherController.GetAllHopThuDen(email);
@@ -108,7 +109,7 @@ public class OtherAction extends ActionSupport implements SessionAware, ServletR
         session.put("GetAllEmail", "GetAllEmail");
         return SUCCESS;
     }
-    
+
     public String SaveHopThu() {
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -117,7 +118,7 @@ public class OtherAction extends ActionSupport implements SessionAware, ServletR
             tinNhanEmail.setLoaiEmail(false); // true là email/ false là phản hồi
         } else {
             tinNhanEmail.setLoaiEmail(true); // true là email/ false là phản hồi
-        }        
+        }
         if (request.getParameter("mssv") == null) {
             tinNhanEmail.setMssv(0);
         } else {
@@ -135,15 +136,32 @@ public class OtherAction extends ActionSupport implements SessionAware, ServletR
         }
         return ERROR;
     }
-    
+
+    public String GetPass() {
+        String email = request.getParameter("email");
+        int dienThoai = Integer.parseInt(request.getParameter("dienThoai"));
+        List<Login> lstLogins = new ArrayList<>();
+        lstLogins = otherController.GetPass(email);
+
+        try {
+            //Send SMS
+            SendSMS sendSMS = new SendSMS();
+            sendSMS.sendSMSCustomer("" + dienThoai + "", "Xin chao " + email + ". Mat khau cua ban la: " + lstLogins.get(0).getPassword() + ". Send By NguyenCongSon");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        session.put("resetPass", "resetPass");
+        return SUCCESS;
+    }
+
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = map;
     }
-    
+
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
 }
