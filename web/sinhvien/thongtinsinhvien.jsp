@@ -10,6 +10,16 @@
     <head>
         <%@include file="../head.jsp" %>
     </head>
+     <%    if (session.getAttribute("GetCVSinhVienSV") == null) {
+    %>
+    <s:action name="GetCVSinhVienSV" executeResult="true"/>
+    <%
+        }
+    %>
+    <%
+        if (session.getAttribute("GetCVSinhVienSV") != null) {
+            session.removeAttribute("GetCVSinhVienSV");
+    %>
     <body>
         <%            if (session.getAttribute("role").equals("0")) {
         %>
@@ -21,17 +31,13 @@
         <%
         } else if (session.getAttribute("role").equals("2")) {
         %>
-      
+        <%@include file="/giangvienhuongdan/gvhdheader.jsp" %>
         <%
         } else if (session.getAttribute("role").equals("3")) {
         %>
         <%@include file="/congty/ctheader.jsp" %>
         <%
-        } else if (session.getAttribute("role").equals("4")) {
-        %>
-        <%@include file="ddctheader.jsp" %>
-        <%
-            }
+        } 
         %>
         <section id="page-breadcrumb">
             <div class="vertical-center sun">
@@ -124,4 +130,7 @@
         <%@include file="../footer.jsp" %>
         <%@include file="../js.jsp" %>
     </body>
+    <%
+    }
+    %>
 </html>

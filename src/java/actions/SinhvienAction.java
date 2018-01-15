@@ -54,6 +54,25 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
     private List<SinhVien> lstSinhVien = new ArrayList<>();
     private List<SinhVienFile> lstSinhVienFile = new ArrayList<>();
     private SinhVienFile sinhVienFile = new SinhVienFile();
+    private List<SinhVienKnvaLt> lstKNLT = new ArrayList<>();
+    private List<SinhVienMucTieu> lstMucTieu = new ArrayList<>();
+    private GvttController giangVienThucTapController;
+
+    public List<SinhVienKnvaLt> getLstKNLT() {
+        return lstKNLT;
+    }
+
+    public void setLstKNLT(List<SinhVienKnvaLt> lstKNLT) {
+        this.lstKNLT = lstKNLT;
+    }
+
+    public List<SinhVienMucTieu> getLstMucTieu() {
+        return lstMucTieu;
+    }
+
+    public void setLstMucTieu(List<SinhVienMucTieu> lstMucTieu) {
+        this.lstMucTieu = lstMucTieu;
+    }
 
     public List<CongTyDeTai> getLstDanhSachDeTaiDK() {
         return lstDanhSachDeTaiDK;
@@ -241,6 +260,7 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
 
     public SinhvienAction() {
         sinhvienController = new SinhvienController();
+        giangVienThucTapController = new GvttController();
     }
 
 //    public void validate() {
@@ -574,7 +594,7 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
                 if (phanTram >= 85) {
                     sinhVienThucTap.setTrangThai(1);
                     sinhVienThucTap.setSoLanThucTap(true);
-                }  else {
+                } else {
                     sinhVienThucTap.setTrangThai(0);
                     sinhVienThucTap.setSoLanThucTap(false);
                 }
@@ -737,8 +757,17 @@ public class SinhvienAction extends ActionSupport implements SessionAware, Servl
 
             }
         }
-        
+
         session.put("DeTai", "DeTai");
+        return SUCCESS;
+    }
+
+    public String GetCVSinhVienSV() {
+        int x = (int) session.get("mssv");
+        lstSinhVien = giangVienThucTapController.GetInfoSinhVien(x);
+        lstKNLT = giangVienThucTapController.GetKNLTSinhVien(x);
+        lstMucTieu = giangVienThucTapController.GetMucTieuSV(x);
+        session.put("GetCVSinhVienSV", "GetCVSinhVienSV");
         return SUCCESS;
     }
 

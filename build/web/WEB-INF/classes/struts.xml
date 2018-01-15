@@ -98,7 +98,7 @@
             <result name="success" >/congty/detai.jsp</result>
             <result name="error">404.html</result>
         </action>
-        <action name="xoaDeTai" class="actions.DdctAction" method="DeleteDeTai">
+        <action name="xoaDeTaiDdct" class="actions.DdctAction" method="DeleteDeTai">
             <result name="success" >/congty/detai.jsp</result>
             <result name="error">404.html</result>
         </action>
@@ -316,7 +316,10 @@
             <result name="error">404.html</result>
         </action>
         
-        
+        <action name="GetCVSinhVienSV" class="actions.SinhvienAction" method="GetCVSinhVienSV">
+            <result name="success" >/sinhvien/thongtinsinhvien.jsp</result>
+            <result name="error">404.html</result>
+        </action>
         
     </package>
 </struts>

@@ -225,7 +225,7 @@
                                         <tr>
                                             <td><s:property value="tenDeTai"/></td>
                                             <td><s:property value="soLuong"/></td>
-                                            <td><a href="xoaDeTai?maDeTai=<s:property value="id"/>"><input style="width: auto; " type="submit" name="submit" class="btn btn-danger" value="XÓA"></a></td>
+                                            <td><a href="xoaDeTaiDdct?maDeTai=<s:property value="id"/>"><input style="width: auto; " type="submit" name="submit" class="btn btn-danger" value="XÓA"></a></td>
                                             <td><a href="chiTietDeTaiCT?maDeTai=<s:property value="id"/>"><input style="width: auto; " type="submit" name="submit" class="btn btn-info" value="CHI TIẾT"></a></td>
                                         </tr>
                                     </s:iterator>

@@ -488,13 +488,14 @@ public class GvttAction extends ActionSupport implements SessionAware, ServletRe
         List<SinhVien> lstSinhVien = new ArrayList<>();
         List<SinhVienThucTap> lstSinhVienThucTap = new ArrayList<>();
         List<SinhVienThucTap> lstCheckSinhVienThucTap = new ArrayList<>();
-        SinhVienvaThucTap sinhVienvaThucTap = new SinhVienvaThucTap();
+        
         lstSinhVien = giangVienThucTapController.GetAllSinhVien();
         lstSinhVienThucTap = giangVienThucTapController.GetAllSinhVienThucTap();
         lstCheckSinhVienThucTap = giangVienThucTapController.CheckSoLanThucTap();
         for (int i = 0; i < lstSinhVienThucTap.size(); i++) {
             for (int j = 0; j < lstSinhVien.size(); j++) {
                 if (lstSinhVienThucTap.get(i).getMssv() == lstSinhVien.get(j).getMssv()) {
+                    SinhVienvaThucTap sinhVienvaThucTap = new SinhVienvaThucTap();
                     sinhVienvaThucTap.setMssv(lstSinhVien.get(j).getMssv());
                     sinhVienvaThucTap.setDiaChi(lstSinhVien.get(j).getDiaChi());
                     sinhVienvaThucTap.setDienThoai(lstSinhVien.get(j).getDienThoai());
